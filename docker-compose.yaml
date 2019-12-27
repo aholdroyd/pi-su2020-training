@@ -20,7 +20,5 @@ services:
     networks:
       - pingnet
 
-
 networks:
     pingnet:
-    pingnet-dmz:
