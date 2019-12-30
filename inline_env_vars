@@ -5,13 +5,12 @@ ASE_MODE=inline
 ASE_ENABLE_ABS=true
 ASE_ABS_ENDPOINT={{abs1.pi-su2020.io}}:8080, {{abs2.pi-su2020.io}}:8080
 ASE_XFF_ENABLE=true
-ASE_ABS_ATTACK_ENABLE=true
 
 # AAD variables
 AAD_MODE=discovery
 ABS_HOST={{abs1.pi-su2020.io}}
 ABS_ACCESS_KEY=abs_ak
 ABS_SECRET_KEY=abs_sk
-ASE_HOST=ase.pi-su2020.com
+ASE_HOST={{ase.pi-su2020.com}}
 ASE_ACCESS_KEY=admin
 ASE_SECRET_KEY=admin
