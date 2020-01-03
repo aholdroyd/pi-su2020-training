@@ -1,0 +1,497 @@
+{
+	"info": {
+		"_postman_id": "688337b4-a6ad-4227-8b82-8437155d2c35",
+		"name": "ASE_4.1_Sideband APIs",
+		"description": "/*\n * Copyright 2019 Ping Identity Corporation. All Rights Reserved.\n * Ping Identity reserves all rights in the program as delivered. Unauthorized\n * use, copying, modification, reverse engineering, disassembling, attempt to discover any\n * source code or underlying ideas or algorithms, creating other works from it, and\n * distribution of this program is strictly prohibited. The program or any portion thereof may not be\n * used or reproduced in any form whatsoever except as provided by a license without the\n * written consent of Ping Identity.  A license under Ping Identity's rights in the\n * program may be available directly from Ping Identity.\n */\n\n\nASE_4.1_Sideband APIs collection is used to make API calls to ASE 4.1\nASE_4.1_Sideband APIs  collection uses variables defined in ASE_4.1_Sideband_Environment.\n\nProvide the necessary values for keys defined in ASE_4.1_Sideband_Environment . Do not change values for keys starting with 'System_'. \n\n",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "ASE Administration",
+			"item": [
+				{
+					"name": "Firewall Status",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "{{Access_Key_Header}}",
+								"value": "{{Access_Key}}"
+							},
+							{
+								"key": "{{Secret_Key_Header}}",
+								"value": "{{Secret_key}}"
+							}
+						],
+						"url": {
+							"raw": "{{FireWall}}",
+							"host": [
+								"{{FireWall}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Firewall",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "{{Access_Key_Header}}",
+								"value": "{{Access_Key}}"
+							},
+							{
+								"key": "{{Secret_Key_Header}}",
+								"value": "{{Secret_key}}"
+							}
+						],
+						"url": {
+							"raw": "{{UpdateFireWall}}=<enable/disable>",
+							"host": [
+								"{{UpdateFireWall}}=<enable"
+							],
+							"path": [
+								"disable>"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "API Administration",
+			"item": [
+				{
+					"name": "List API",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "{{Access_Key_Header}}",
+								"value": "{{Access_Key}}"
+							},
+							{
+								"key": "{{Secret_Key_Header}}",
+								"value": "{{Secret_key}}"
+							}
+						],
+						"url": {
+							"raw": "{{List_API}}",
+							"host": [
+								"{{List_API}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create API",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "{{Access_Key_Header}}",
+								"value": "{{Access_Key}}"
+							},
+							{
+								"key": "{{Secret_Key_Header}}",
+								"value": "{{Secret_key}}"
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"api_metadata\": {\n        \"protocol\": \"https\",\n        \"url\": \"/pubatmapp\",\n        \"hostname\": \"*\",\n        \"oauth2_access_token\": false,\n        \"apikey_qs\": \"\",\n        \"apikey_header\": \"\",\n        \"enable_blocking\": true,\n        \"cookie\": \"JSESSIONID\",\n        \"cookie_idle_timeout\": \"200m\",\n        \"logout_api_enabled\": false,\n        \"cookie_persistence_enabled\": false,\n        \"login_url\": \"/pubatmapp/login\",\n        \"api_mapping\": {\n            \"internal_url\": \"/atmapp\"\n        },\n        \"api_pattern_enforcement\": {\n            \"protocol_allowed\": \"https\",\n            \"http_redirect\": {\n                \"response_code\": \"302\",\n                \"response_def\": \"OK\",\n                \"https_url\": \"https://127.0.0.1/your_external_api\"\n            },\n            \"methods_allowed\": [\n                \"GET\",\n                \"POST\",\n                \"PUT\",\n                \"DELETE\"\n            ],\n            \"content_type_allowed\": \"\",\n            \"error_code\": \"401\",\n            \"error_def\": \"Unauthorized\",\n            \"error_message_body\": \"401 Unauthorized\"\n        },\n        \"flow_control\": {\n            \"client_spike_threshold\": \"100/second\",\n            \"server_connection_queueing\": true\n        },\n        \"api_memory_size\": \"128mb\",\n        \"health_check\": true,\n        \"health_check_interval\": 60,\n        \"health_retry_count\": 4,\n        \"health_url\": \"/atmapp/health\",\n        \"server_ssl\": false,\n        \"servers\": [\n            {\n                \"host\": \"172.16.40.22\",\n                \"port\": 3001,\n                \"server_connection_quota\": 0,\n                \"server_spike_threshold\": \"50/second\"\n            },\n            {\n                \"host\": \"172.16.40.22\",\n                \"port\": 3002,\n                \"server_connection_quota\": 0,\n                \"server_spike_threshold\": \"50/second\"\n            },\n            {\n                \"host\": \"172.16.40.22\",\n                \"port\": 3003,\n                \"server_connection_quota\": 0,\n                \"server_spike_threshold\": \"50/second\"\n            },\n            {\n                \"host\": \"172.16.40.22\",\n                \"port\": 3004,\n                \"server_connection_quota\": 0,\n                \"server_spike_threshold\": \"5/second\"\n            }\n        ],\n        \"decoy_config\": {\n            \"decoy_enabled\": true,\n            \"response_code\": 200,\n            \"response_def\": \"OK\",\n            \"response_message\": \"OK\",\n            \"decoy_subpaths\": [\n                \"/pubatmapp/decoy\"\n            ]\n        }\n    }\n}"
+						},
+						"url": {
+							"raw": "{{API}}=<API Name>",
+							"host": [
+								"{{API}}=<API Name>"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Read API",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "{{Access_Key_Header}}",
+								"value": "{{Access_Key}}"
+							},
+							{
+								"key": "{{Secret_Key_Header}}",
+								"value": "{{Secret_key}}"
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{API}}=<API Name>",
+							"host": [
+								"{{API}}=<API Name>"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update API",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "{{Access_Key_Header}}",
+								"value": "{{Access_Key}}"
+							},
+							{
+								"key": "{{Secret_Key_Header}}",
+								"value": "{{Secret_key}}"
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"api_metadata\": {\n        \"protocol\": \"https\",\n        \"url\": \"/pubatmapp\",\n        \"hostname\": \"*\",\n        \"oauth2_access_token\": false,\n        \"apikey_qs\": \"\",\n        \"apikey_header\": \"\",\n        \"enable_blocking\": true,\n        \"cookie\": \"JSESSIONID\",\n        \"cookie_idle_timeout\": \"200m\",\n        \"logout_api_enabled\": false,\n        \"cookie_persistence_enabled\": false,\n        \"login_url\": \"/pubatmapp/login\",\n        \"api_mapping\": {\n            \"internal_url\": \"/atmapp\"\n        },\n        \"api_pattern_enforcement\": {\n            \"protocol_allowed\": \"https\",\n            \"http_redirect\": {\n                \"response_code\": \"302\",\n                \"response_def\": \"OK\",\n                \"https_url\": \"https://127.0.0.1/your_external_api\"\n            },\n            \"methods_allowed\": [\n                \"GET\",\n                \"POST\",\n                \"PUT\",\n                \"DELETE\"\n            ],\n            \"content_type_allowed\": \"\",\n            \"error_code\": \"401\",\n            \"error_def\": \"Unauthorized\",\n            \"error_message_body\": \"401 Unauthorized\"\n        },\n        \"flow_control\": {\n            \"client_spike_threshold\": \"100/second\",\n            \"server_connection_queueing\": true\n        },\n        \"api_memory_size\": \"128mb\",\n        \"health_check\": true,\n        \"health_check_interval\": 60,\n        \"health_retry_count\": 4,\n        \"health_url\": \"/atmapp/health\",\n        \"server_ssl\": false,\n        \"servers\": [\n            {\n                \"host\": \"172.16.40.22\",\n                \"port\": 3001,\n                \"server_connection_quota\": 0,\n                \"server_spike_threshold\": \"50/second\"\n            },\n            {\n                \"host\": \"172.16.40.22\",\n                \"port\": 3002,\n                \"server_connection_quota\": 0,\n                \"server_spike_threshold\": \"50/second\"\n            },\n            {\n                \"host\": \"172.16.40.22\",\n                \"port\": 3003,\n                \"server_connection_quota\": 0,\n                \"server_spike_threshold\": \"50/second\"\n            },\n            {\n                \"host\": \"172.16.40.22\",\n                \"port\": 3008,\n                \"server_connection_quota\": 0,\n                \"server_spike_threshold\": \"5/second\"\n            }\n        ],\n        \"decoy_config\": {\n            \"decoy_enabled\": true,\n            \"response_code\": 200,\n            \"response_def\": \"OK\",\n            \"response_message\": \"OK\",\n            \"decoy_subpaths\": [\n                \"/pubatmapp/decoy\"\n            ]\n        }\n    }\n}"
+						},
+						"url": {
+							"raw": "{{API}}=<API Name>",
+							"host": [
+								"{{API}}=<API Name>"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete API",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "{{Access_Key_Header}}",
+								"value": "{{Access_Key}}"
+							},
+							{
+								"key": "{{Secret_Key_Header}}",
+								"value": "{{Secret_key}}"
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{API}}=<API Name>",
+							"host": [
+								"{{API}}=<API Name>"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Blacklist Management",
+			"item": [
+				{
+					"name": "View Blacklist",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "{{Access_Key_Header}}",
+								"value": "{{Access_Key}}"
+							},
+							{
+								"key": "{{Secret_Key_Header}}",
+								"value": "{{Secret_key}}"
+							}
+						],
+						"url": {
+							"raw": "{{Blacklist}}=<Tag,default=all>>",
+							"host": [
+								"{{Blacklist}}=<Tag,default=all>>"
+							]
+						},
+						"description": "View all or specific type of blacklisted attacks\n\n/v4/ase/firewall/blacklist?tag=<tag>\ntag=all (default is all)\n<all\n/manual\n/abs_generated\n/invalid_content_type\n/invalid_method\n/invalid_protocol\n/decoy\n>"
+					},
+					"response": []
+				},
+				{
+					"name": "Add an Attack to Blacklist",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "{{Access_Key_Header}}",
+								"value": "{{Access_Key}}"
+							},
+							{
+								"key": "{{Secret_Key_Header}}",
+								"value": "{{Secret_key}}"
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n \"type\" : \"ip\",\n \"value\" : \"1.1.1.1\"\n}"
+						},
+						"url": {
+							"raw": "{{Blacklist}}",
+							"host": [
+								"{{Blacklist}}"
+							]
+						},
+						"description": "===============for IP===============\n{\n \"type\" : \"ip\",\n \"value\" : \"1.1.1.1\"\n}\n===============for Token=============\n{\n \"type\" : \"token\",\n \"value\" : \"sadjhasiufgkjdsbfkgfa\"\n}\n=============for Cookie/api_key=======\n{\n \"type\" : \"cookie/api_key\",\n \"name\" : \"JSESSIONID\",\n \"value\" : \"ljkhasioutfdqbjsfdmakhflia\"\n}"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete an Attack from Blacklist",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "{{Access_Key_Header}}",
+								"value": "{{Access_Key}}"
+							},
+							{
+								"key": "{{Secret_Key_Header}}",
+								"value": "{{Secret_key}}"
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n \"type\" : \"ip\",\n \"value\" : \"1.1.1.1\"\n}\n"
+						},
+						"url": {
+							"raw": "{{Blacklist}}",
+							"host": [
+								"{{Blacklist}}"
+							]
+						},
+						"description": "Delete an attack from blacklist\n\nex:\n\n===============for IP===============\n{\n \"type\" : \"ip\",\n \"value\" : \"1.1.1.1\"\n}\n===============for Token=============\n{\n \"type\" : \"token\",\n \"value\" : \"sadjhasiufgkjdsbfkgfa\"\n}\n=============for Cookie/api_key=======\n{\n \"type\" : \"cookie/api_key\",\n \"name\" : \"JSESSIONID\",\n \"value\" : \"ljkhasioutfdqbjsfdmakhflia\"\n}"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete all Attacks from Blacklist",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "{{Access_Key_Header}}",
+								"value": "{{Access_Key}}"
+							},
+							{
+								"key": "{{Secret_Key_Header}}",
+								"value": "{{Secret_key}}"
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{Blacklist}}=all",
+							"host": [
+								"{{Blacklist}}=all"
+							]
+						},
+						"description": "Delete all the blacklisted attacks"
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Whitelist Management",
+			"item": [
+				{
+					"name": "View Whitelist",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "{{Access_Key_Header}}",
+								"value": "{{Access_Key}}"
+							},
+							{
+								"key": "{{Secret_Key_Header}}",
+								"value": "{{Secret_key}}"
+							}
+						],
+						"url": {
+							"raw": "{{Whitelist}}",
+							"host": [
+								"{{Whitelist}}"
+							]
+						},
+						"description": "View all or specific type of whielisted attacks\n\n/v4/ase/firewall/blacklist?tag=<tag>\ntag=all (default is all)\n<all\n/manual\n/abs_generated\n/invalid_content_type\n/invalid_method\n/invalid_protocol\n/decoy\n>"
+					},
+					"response": []
+				},
+				{
+					"name": "Add an Attack to Whitelist",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "{{Access_Key_Header}}",
+								"value": "{{Access_Key}}"
+							},
+							{
+								"key": "{{Secret_Key_Header}}",
+								"value": "{{Secret_key}}"
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n \"type\" : \"ip\",\n \"value\" : \"1.1.1.12\"\n}"
+						},
+						"url": {
+							"raw": "{{Whitelist}}",
+							"host": [
+								"{{Whitelist}}"
+							]
+						},
+						"description": "===============for IP===============\n{\n \"type\" : \"ip\",\n \"value\" : \"1.1.1.1\"\n}\n===============for Token=============\n{\n \"type\" : \"token\",\n \"value\" : \"sadjhasiufgkjdsbfkgfa\"\n}\n=============for Cookie/api_key=======\n{\n \"type\" : \"cookie/api_key\",\n \"name\" : \"JSESSIONID\",\n \"value\" : \"ljkhasioutfdqbjsfdmakhflia\"\n}"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete an Attack from Whitelist",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "{{Access_Key_Header}}",
+								"value": "{{Access_Key}}"
+							},
+							{
+								"key": "{{Secret_Key_Header}}",
+								"value": "{{Secret_key}}"
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n \"type\" : \"ip\",\n \"value\" : \"1.1.1.12\"\n}\n"
+						},
+						"url": {
+							"raw": "{{Whitelist}}",
+							"host": [
+								"{{Whitelist}}"
+							]
+						},
+						"description": "Delete an attack from whitelist\n\nex:\n\n===============for IP===============\n{\n \"type\" : \"ip\",\n \"value\" : \"1.1.1.1\"\n}\n===============for Token=============\n{\n \"type\" : \"token\",\n \"value\" : \"sadjhasiufgkjdsbfkgfa\"\n}\n=============for Cookie/api_key=======\n{\n \"type\" : \"cookie/api_key\",\n \"name\" : \"JSESSIONID\",\n \"value\" : \"ljkhasioutfdqbjsfdmakhflia\"\n}"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete all Attacks from Whitelist",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "{{Access_Key_Header}}",
+								"value": "{{Access_Key}}"
+							},
+							{
+								"key": "{{Secret_Key_Header}}",
+								"value": "{{Secret_key}}"
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{Whitelist}}=all",
+							"host": [
+								"{{Whitelist}}=all"
+							]
+						},
+						"description": "Delete all the whitelisted  attacks"
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "6257b267-a420-4753-85c8-ea864c3e9c4c",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "b5b3a9f5-b2c5-4e36-8499-9a34e2e6fe47",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"protocolProfileBehavior": {}
+}

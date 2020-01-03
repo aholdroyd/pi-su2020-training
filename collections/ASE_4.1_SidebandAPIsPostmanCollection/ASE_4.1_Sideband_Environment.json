@@ -1,0 +1,89 @@
+{
+	"id": "3920df83-840a-4c19-80cb-d9540a853eae",
+	"name": "ASE_4.1_Sideband_Environment",
+	"values": [
+		{
+			"key": "ASE_IP",
+			"value": "172.16.40.214",
+			"enabled": true
+		},
+		{
+			"key": "Port",
+			"value": "8010",
+			"enabled": true
+		},
+		{
+			"key": "Access_Key_Header",
+			"value": "x-ase-access-key",
+			"enabled": true
+		},
+		{
+			"key": "Secret_Key_Header",
+			"value": "x-ase-secret-key",
+			"enabled": true
+		},
+		{
+			"key": "Access_Key",
+			"value": "admin",
+			"enabled": true
+		},
+		{
+			"key": "Secret_key",
+			"value": "admin",
+			"enabled": true
+		},
+		{
+			"key": "API_Name",
+			"value": "pubatmapp",
+			"enabled": true
+		},
+		{
+			"key": "System_URL",
+			"value": "https://{{ASE_IP}}:{{Port}}/v4/ase",
+			"enabled": true
+		},
+		{
+			"key": "List_API",
+			"value": "{{System_URL}}/api",
+			"enabled": true
+		},
+		{
+			"key": "API",
+			"value": "{{List_API}}?api_id",
+			"enabled": true
+		},
+		{
+			"key": "Cluster",
+			"value": "{{System_URL}}/cluster",
+			"enabled": true
+		},
+		{
+			"key": "PersistentConnection",
+			"value": "{{System_URL}}/persistentconnection?api_id",
+			"enabled": true
+		},
+		{
+			"key": "FireWall",
+			"value": "{{System_URL}}/firewall",
+			"enabled": true
+		},
+		{
+			"key": "UpdateFireWall",
+			"value": "{{FireWall}}?status",
+			"enabled": true
+		},
+		{
+			"key": "Blacklist",
+			"value": "{{FireWall}}/blacklist?tag",
+			"enabled": true
+		},
+		{
+			"key": "Whitelist",
+			"value": "{{FireWall}}/whitelist?tag",
+			"enabled": true
+		}
+	],
+	"_postman_variable_scope": "environment",
+	"_postman_exported_at": "2019-12-16T10:41:24.072Z",
+	"_postman_exported_using": "Postman/7.12.0"
+}

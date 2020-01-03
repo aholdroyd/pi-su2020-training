@@ -1,0 +1,1058 @@
+{
+	"info": {
+		"_postman_id": "95bd36fa-8fc7-427e-956e-8247a39991aa",
+		"name": "ABS_4.1_Reports",
+		"description": "/*\n * Copyright 2019 Ping Identity Corporation. All Rights Reserved.\n * Ping Identity reserves all rights in the program as delivered. Unauthorized\n * use, copying, modification, reverse engineering, disassembling, attempt to discover any\n * source code or underlying ideas or algorithms, creating other works from it, and\n * distribution of this program is strictly prohibited. The program or any portion thereof may not be\n * used or reproduced in any form whatsoever except as provided by a license without the\n * written consent of Ping Identity.  A license under Ping Identity's rights in the\n * program may be available directly from Ping Identity.\n */\n\n\nABS_4.1_Reports collection is used to make API calls to ABS 4.1\n\nABS_4.1_Reports collection uses ABS_4.1_Environment environment.\nProvide the necessary values for keys defined in ABS_4.1_Environment. Do not change values for keys starting with 'System_'. \n\nNote:\n1. For 'Attacks' provide type id in the url, e.g {{System_Attack_Type}}=1\n\n2. For 'IP Forensic Info' provide IP in the url , e.g {{System_IP_Search_URL}}=10.10.0.198\n\n3. For 'Cookie Forensic Info' provide cookie in the url, e.g {{System_Cookie_Search_URL}}=HASKAKHWHDEWJOW\n\n4. For 'Token Forensic Info' provide token  in the url, e.g {{System_Token_Search_URL}}=ADUBVYNATSHGANKTA\n\n5. For 'Valid URL List' provide API Name in the url, e.g {{System_ListURLs}}=shop\n\n6. For 'Set User Defined Thresholds' provide proper values in body tab for different attack variables.\n\n7. For 'Use System Generated Thresholds' provide proper values in body tab for different attack variables.\n",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Administration",
+			"item": [
+				{
+					"name": "Administration",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "{{Access_Key_Header}}",
+								"value": "{{Access_Key}}"
+							},
+							{
+								"key": "{{Secret_Key_Header}}",
+								"value": "{{Secret_key}}"
+							}
+						],
+						"url": {
+							"raw": "{{System_Admin}}",
+							"host": [
+								"{{System_Admin}}"
+							]
+						},
+						"description": "Admin api gives the details of ABS cluster, logs processed from all api proxy nodes,api discovery status and ML job information."
+					},
+					"response": []
+				},
+				{
+					"name": "Update TTL",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "{{Access_Key_Header}}",
+								"value": "{{Access_Key}}"
+							},
+							{
+								"key": "{{Secret_Key_Header}}",
+								"value": "{{Secret_key}}"
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \"ids\" : [ \r\n       {\r\n           \"id\" : \"ip\",\r\n           \"ttl\" : 120\r\n       }, \r\n       {\r\n           \"id\" : \"cookie\",\r\n           \"ttl\" : 120\r\n       },\r\n       {\r\n           \"id\" : \"access_token\",\r\n           \"ttl\" : 120\r\n       },\r\n       {\r\n       \"id\" : \"api_key\",\r\n       \"ttl\" : 240\r\n       },\r\n       {\r\n       \"id\" : \"username\",\r\n       \"ttl\" : 360\r\n       }\r\n   ]\r\n}"
+						},
+						"url": {
+							"raw": "{{System_Admin}}",
+							"host": [
+								"{{System_Admin}}"
+							]
+						},
+						"description": "Admin api gives the details of ABS cluster, logs processed from all api proxy nodes,api discovery status and ML job information."
+					},
+					"response": []
+				},
+				{
+					"name": "Discovery Summary",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "{{Access_Key_Header}}",
+								"value": "{{Access_Key}}"
+							},
+							{
+								"key": "{{Secret_Key_Header}}",
+								"value": "{{Secret_key}}"
+							}
+						],
+						"url": {
+							"raw": "{{System_Discovery}}",
+							"host": [
+								"{{System_Discovery}}"
+							]
+						},
+						"description": "Discovery Summary-API provides the summary of discovered APIs"
+					},
+					"response": []
+				},
+				{
+					"name": "Discovery Details",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "{{Access_Key_Header}}",
+								"value": "{{Access_Key}}"
+							},
+							{
+								"key": "{{Secret_Key_Header}}",
+								"value": "{{Secret_key}}"
+							}
+						],
+						"url": {
+							"raw": "{{System_Discovery_Details}}=<api_name>",
+							"host": [
+								"{{System_Discovery_Details}}=<api_name>"
+							]
+						},
+						"description": "Discovery Details-API privides details of discovered API ID given in the request"
+					},
+					"response": []
+				},
+				{
+					"name": "Valid URL List",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "{{Access_Key_Header}}",
+								"value": "{{Access_Key}}"
+							},
+							{
+								"key": "{{Secret_Key_Header}}",
+								"value": "{{Secret_key}}"
+							}
+						],
+						"url": {
+							"raw": "{{System_ValidURLs}}",
+							"host": [
+								"{{System_ValidURLs}}"
+							]
+						},
+						"description": "Listurl API provides the list of valid URL for the specified API"
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Metrics",
+			"item": [
+				{
+					"name": "Metrics",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "{{Access_Key_Header}}",
+								"value": "{{Access_Key}}"
+							},
+							{
+								"key": "{{Secret_Key_Header}}",
+								"value": "{{Secret_key}}"
+							}
+						],
+						"url": {
+							"raw": "{{System_Metrics}}",
+							"host": [
+								"{{System_Metrics}}"
+							]
+						},
+						"description": "Provides the request response details for given date range and API "
+					},
+					"response": []
+				},
+				{
+					"name": "API Key Metrics",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "{{Access_Key_Header}}",
+								"value": "{{Access_Key}}"
+							},
+							{
+								"key": "{{Secret_Key_Header}}",
+								"value": "{{Secret_key}}"
+							}
+						],
+						"url": {
+							"raw": "{{System_API_Key_Metrics}}",
+							"host": [
+								"{{System_API_Key_Metrics}}"
+							]
+						},
+						"description": "Provides API Key Metrics-request/response details for given date range"
+					},
+					"response": []
+				},
+				{
+					"name": "OAuth Token Metrics",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "{{Access_Key_Header}}",
+								"value": "{{Access_Key}}"
+							},
+							{
+								"key": "{{Secret_Key_Header}}",
+								"value": "{{Secret_key}}"
+							}
+						],
+						"url": {
+							"raw": "{{System_OAuth_Token_Metrics}}",
+							"host": [
+								"{{System_OAuth_Token_Metrics}}"
+							]
+						},
+						"description": "Provides OAuth Token Metrics-request/response details for given date range."
+					},
+					"response": []
+				},
+				{
+					"name": "Username Metrics",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "{{Access_Key_Header}}",
+								"value": "{{Access_Key}}"
+							},
+							{
+								"key": "{{Secret_Key_Header}}",
+								"value": "{{Secret_key}}"
+							}
+						],
+						"url": {
+							"raw": "{{System_UserName_Metrics}}",
+							"host": [
+								"{{System_UserName_Metrics}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Blocked Connections Summary",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "{{Access_Key_Header}}",
+								"value": "{{Access_Key}}"
+							},
+							{
+								"key": "{{Secret_Key_Header}}",
+								"value": "{{Secret_key}}"
+							}
+						],
+						"url": {
+							"raw": "{{System_Blocked_Connections_Summary}}",
+							"host": [
+								"{{System_Blocked_Connections_Summary}}"
+							]
+						},
+						"description": "Blocked Connections Summary gives summay of all blocked connections within given date range."
+					},
+					"response": []
+				},
+				{
+					"name": "Blocked Connections Details",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "{{Access_Key_Header}}",
+								"value": "{{Access_Key}}"
+							},
+							{
+								"key": "{{Secret_Key_Header}}",
+								"value": "{{Secret_key}}"
+							}
+						],
+						"url": {
+							"raw": "{{System_Blocked_Connections_Details}}",
+							"host": [
+								"{{System_Blocked_Connections_Details}}"
+							]
+						},
+						"description": "BlockedConnections detailes gives complete details of all blocked connections within given date range"
+					},
+					"response": []
+				},
+				{
+					"name": "Backend Errors",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "{{Access_Key_Header}}",
+								"value": "{{Access_Key}}"
+							},
+							{
+								"key": "{{Secret_Key_Header}}",
+								"value": "{{Secret_key}}"
+							}
+						],
+						"url": {
+							"raw": "{{System_Backend_Errors}}",
+							"host": [
+								"{{System_Backend_Errors}}"
+							]
+						},
+						"description": "BackendErrors gives complete details of backend errors  within given date range for given API"
+					},
+					"response": []
+				},
+				{
+					"name": "Flow Control",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "{{Access_Key_Header}}",
+								"value": "{{Access_Key}}"
+							},
+							{
+								"key": "{{Secret_Key_Header}}",
+								"value": "{{Secret_key}}"
+							}
+						],
+						"url": {
+							"raw": "{{System_Flow_Control}}",
+							"host": [
+								"{{System_Flow_Control}}"
+							]
+						},
+						"description": "Reports flow control information for a given API"
+					},
+					"response": []
+				},
+				{
+					"name": "Decoy",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "{{Access_Key_Header}}",
+								"value": "{{Access_Key}}"
+							},
+							{
+								"key": "{{Secret_Key_Header}}",
+								"value": "{{Secret_key}}"
+							}
+						],
+						"url": {
+							"raw": "{{System_Decoy}}",
+							"host": [
+								"{{System_Decoy}}"
+							]
+						},
+						"description": "Provides the decoy request response details for given date range and API "
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Forensics",
+			"item": [
+				{
+					"name": "IP Forensic Info",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "{{Access_Key_Header}}",
+								"value": "{{Access_Key}}"
+							},
+							{
+								"key": "{{Secret_Key_Header}}",
+								"value": "{{Secret_key}}"
+							}
+						],
+						"url": {
+							"raw": "{{System_IP_Search_URL}}=<ip>",
+							"host": [
+								"{{System_IP_Search_URL}}=<ip>"
+							]
+						},
+						"description": "IP Forensic Info-Provides the traffic details-such as  total no of requests originated by the IP, number of anomalous requests generated, number attacks originated by the given IP."
+					},
+					"response": []
+				},
+				{
+					"name": "Cookie Forensic Info",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "{{Access_Key_Header}}",
+								"value": "{{Access_Key}}"
+							},
+							{
+								"key": "{{Secret_Key_Header}}",
+								"value": "{{Secret_key}}"
+							}
+						],
+						"url": {
+							"raw": "{{System_Cookie_Search_URL}}=<cookie>",
+							"host": [
+								"{{System_Cookie_Search_URL}}=<cookie>"
+							]
+						},
+						"description": "Cookie  Forensic Info-Provides traffic details-such as  total no of requests originated by using the given Cookie , number of anomalous requests generated, number attacks originated by the cookie specified in the URL"
+					},
+					"response": []
+				},
+				{
+					"name": "Token Forensic Info",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "{{Access_Key_Header}}",
+								"value": "{{Access_Key}}"
+							},
+							{
+								"key": "{{Secret_Key_Header}}",
+								"value": "{{Secret_key}}"
+							}
+						],
+						"url": {
+							"raw": "{{System_Token_Search_URL}}=<token>",
+							"host": [
+								"{{System_Token_Search_URL}}=<token>"
+							]
+						},
+						"description": "Token Forensic Info-Provides traffic details-such as  total no of requests originated by using the given token, number of anomalous requests generated, number attacks originated by the given token specified in the URL"
+					},
+					"response": []
+				},
+				{
+					"name": "API Key Forensic Info",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "{{Access_Key_Header}}",
+								"value": "{{Access_Key}}"
+							},
+							{
+								"key": "{{Secret_Key_Header}}",
+								"value": "{{Secret_key}}"
+							}
+						],
+						"url": {
+							"raw": "{{System_API_Key_Search_URL}}=<APIKey>",
+							"host": [
+								"{{System_API_Key_Search_URL}}=<APIKey>"
+							]
+						},
+						"description": "Token Forensic Info-Provides traffic details-such as  total no of requests originated by using the given token, number of anomalous requests generated, number attacks originated by the given token specified in the URL"
+					},
+					"response": []
+				},
+				{
+					"name": "User Name Forensic Info",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "{{Access_Key_Header}}",
+								"value": "{{Access_Key}}"
+							},
+							{
+								"key": "{{Secret_Key_Header}}",
+								"value": "{{Secret_key}}"
+							}
+						],
+						"url": {
+							"raw": "{{System_User_Name_Search_URL}}=<UserName>",
+							"host": [
+								"{{System_User_Name_Search_URL}}=<UserName>"
+							]
+						},
+						"description": "Token Forensic Info-Provides traffic details-such as  total no of requests originated by using the given token, number of anomalous requests generated, number attacks originated by the given token specified in the URL"
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Attacks",
+			"item": [
+				{
+					"name": "Per API Attacks",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "{{Access_Key_Header}}",
+								"value": "{{Access_Key}}"
+							},
+							{
+								"key": "{{Secret_Key_Header}}",
+								"value": "{{Secret_key}}"
+							}
+						],
+						"url": {
+							"raw": "{{System_Attack_Type}}=<type_id>",
+							"host": [
+								"{{System_Attack_Type}}=<type_id>"
+							]
+						},
+						"description": "Provides the details of attack type requested by the user\nInput the Attack type id(eg 1 or 2 etc) in the url"
+					},
+					"response": []
+				},
+				{
+					"name": "Across API Attacks",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "{{Access_Key_Header}}",
+								"value": "{{Access_Key}}"
+							},
+							{
+								"key": "{{Secret_Key_Header}}",
+								"value": "{{Secret_key}}"
+							}
+						],
+						"url": {
+							"raw": "{{System_AcrossAPI _System_Attack_Type}}=<type_id>",
+							"host": [
+								"{{System_AcrossAPI _System_Attack_Type}}=<type_id>"
+							]
+						},
+						"description": "Provides the details of attack type requested by the user\nInput the Attack type id(eg 16 or 22 etc) in the url"
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Anamolies",
+			"item": [
+				{
+					"name": "Per API Anomalies",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "{{Access_Key_Header}}",
+								"value": "{{Access_Key}}"
+							},
+							{
+								"key": "{{Secret_Key_Header}}",
+								"value": "{{Secret_key}}"
+							}
+						],
+						"url": {
+							"raw": "{{System_Anomalies}}",
+							"host": [
+								"{{System_Anomalies}}"
+							]
+						},
+						"description": "Provides the anomalous request response details for given date range and API "
+					},
+					"response": []
+				},
+				{
+					"name": "Across API Anomalies",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "{{Access_Key_Header}}",
+								"value": "{{Access_Key}}"
+							},
+							{
+								"key": "{{Secret_Key_Header}}",
+								"value": "{{Secret_key}}"
+							}
+						],
+						"url": {
+							"raw": "{{System_AcrossAPI _System_Anomalies}}",
+							"host": [
+								"{{System_AcrossAPI _System_Anomalies}}"
+							]
+						},
+						"description": "Provides the details of attack type requested by the user\nInput the Attack type id(eg 16 or 22 etc) in the url"
+					},
+					"response": []
+				},
+				{
+					"name": "HackersURL",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "{{Access_Key_Header}}",
+								"value": "{{Access_Key}}"
+							},
+							{
+								"key": "{{Secret_Key_Header}}",
+								"value": "{{Secret_key}}"
+							}
+						],
+						"url": {
+							"raw": "{{System_HackersURL}}",
+							"host": [
+								"{{System_HackersURL}}"
+							]
+						},
+						"description": "HackersURL-This report contains list of hacker's URL for the specified API"
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Thresholds",
+			"item": [
+				{
+					"name": "Per API Thresholds",
+					"item": [
+						{
+							"name": "Current Attack Thresholds",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "{{Access_Key_Header}}",
+										"value": "{{Access_Key}}"
+									},
+									{
+										"key": "{{Secret_Key_Header}}",
+										"value": "{{Secret_key}}"
+									}
+								],
+								"url": {
+									"raw": "{{System_Attack_Type_Get_Variables}}",
+									"host": [
+										"{{System_Attack_Type_Get_Variables}}"
+									]
+								},
+								"description": "Current Attack Thresholds-API gives complets details of the system set and user set threshold values for the given API"
+							},
+							"response": []
+						},
+						{
+							"name": "Use System Generated Thresholds",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "{{Access_Key_Header}}",
+										"value": "{{Access_Key}}"
+									},
+									{
+										"key": "{{Secret_Key_Header}}",
+										"value": "{{Secret_key}}"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"api_name\" : \"{{API_Name}}\",\n  \"mode\": \"system\",\n  \"ioc_threshold\": [\n    {\n      \"type\": \"api_ddos_attack_type_1\",\n      \"variable\": \"A\"\n    }\n\t]\n}"
+								},
+								"url": {
+									"raw": "{{System_Attack_Type_Set_Variable_Threshold}}",
+									"host": [
+										"{{System_Attack_Type_Set_Variable_Threshold}}"
+									]
+								},
+								"description": "Update IOC Threshold-Updates the threshold values-to system default values.Variable names should be provided by the user in the request body."
+							},
+							"response": []
+						},
+						{
+							"name": "Set User Defined Thresholds",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "{{Access_Key_Header}}",
+										"value": "{{Access_Key}}"
+									},
+									{
+										"key": "{{Secret_Key_Header}}",
+										"value": "{{Secret_key}}"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"api_name\" : \"{{API_Name}}\",\n  \"mode\": \"user\",\n  \"ioc_threshold\": [\n\t{\n      \"type\": \"data_exfiltration_attack\",\n      \"variable\": \"A\",\n      \"tn\": \"18\",\n      \"tx\": \"\"\n    },{\n      \"type\": \"data_exfiltration_attack\",\n      \"variable\": \"B\",\n      \"tn\": \"18\",\n\t  \"tx\": \"\"\n    }\n\t]\n}"
+								},
+								"url": {
+									"raw": "{{System_Attack_Type_Set_Variable_Threshold}}",
+									"host": [
+										"{{System_Attack_Type_Set_Variable_Threshold}}"
+									]
+								},
+								"description": "Update IOC Threshold \nUpdates the threshold values to user defined values for the given API.\nVariable names,and desired values(eg: Tn/Tx) to be set should be provided by the user in the request body."
+							},
+							"response": []
+						}
+					],
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "112cb1fa-d73e-42cc-b82f-a532f0636c1a",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "2728a632-e811-4b51-bec9-75552b6e324c",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Across API Thresholds",
+					"item": [
+						{
+							"name": "Current Across API Attck Thresholds",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "{{Access_Key_Header}}",
+										"value": "{{Access_Key}}"
+									},
+									{
+										"key": "{{Secret_Key_Header}}",
+										"value": "{{Secret_key}}"
+									}
+								],
+								"url": {
+									"raw": "{{System_AcrossAPI _System_Attack_Thresholds}}=<type_id>",
+									"host": [
+										"{{System_AcrossAPI _System_Attack_Thresholds}}=<type_id>"
+									]
+								},
+								"description": "Current Extended Attack Thresholds-API gives complets details of the system set and user set threshold values."
+							},
+							"response": []
+						},
+						{
+							"name": "Set User Thresholds -Across API  Attcks",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "{{Access_Key_Header}}",
+										"value": "{{Access_Key}}"
+									},
+									{
+										"key": "{{Secret_Key_Header}}",
+										"value": "{{Secret_key}}"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n \"id\":\"18\",\r\n \"mode\": \"user\",\r\n \"ioc_threshold\": [\r\n{\r\n     \"type\": \"extended_probing_replay_cookie\",\r\n     \"variable\": \"A\",\r\n     \"tn\": \"25\",\r\n     \"tx\": \"28\"\r\n   },{\r\n     \"type\": \"extended_probing_replay_cookie\",\r\n     \"variable\": \"B\",\r\n     \"tn\": \"3\",\r\n     \"tx\": \"4\"\r\n   }\r\n]\r\n}"
+								},
+								"url": {
+									"raw": "{{System_Attack_Type_Set_Variable_Threshold}}",
+									"host": [
+										"{{System_Attack_Type_Set_Variable_Threshold}}"
+									]
+								},
+								"description": "Update IOC Threshold \nUpdates the threshold values to user defined values.\nVariable names,and desired values(eg: Tn/Tx) to be set should be provided by the user in the request body.\n\n"
+							},
+							"response": []
+						},
+						{
+							"name": "Use System  Generated Thresholds-Across API Attacks",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "{{Access_Key_Header}}",
+										"value": "{{Access_Key}}"
+									},
+									{
+										"key": "{{Secret_Key_Header}}",
+										"value": "{{Secret_key}}"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n \"id\":\"18\",\r\n \"mode\": \"system\",\r\n \"ioc_threshold\": [\r\n{\r\n     \"type\": \"extended_probing_replay_cookie\",\r\n     \"variable\": \"A\"\r\n   }\r\n]\r\n}"
+								},
+								"url": {
+									"raw": "{{System_Attack_Type_Set_Variable_Threshold}}",
+									"host": [
+										"{{System_Attack_Type_Set_Variable_Threshold}}"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Blacklist Management",
+			"item": [
+				{
+					"name": "Complete ABS Blacklist",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "{{Access_Key_Header}}",
+								"value": "{{Access_Key}}"
+							},
+							{
+								"key": "{{Secret_Key_Header}}",
+								"value": "{{Secret_key}}"
+							}
+						],
+						"url": {
+							"raw": "{{System_All_Attack_List}}",
+							"host": [
+								"{{System_All_Attack_List}}"
+							]
+						},
+						"description": "Get the list of all Attack - From 4.1"
+					},
+					"response": []
+				},
+				{
+					"name": "Active ABS Blacklist",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "{{Access_Key_Header}}",
+								"value": "{{Access_Key}}"
+							},
+							{
+								"key": "{{Secret_Key_Header}}",
+								"value": "{{Secret_key}}"
+							}
+						],
+						"url": {
+							"raw": "{{System_Active_Attack}}",
+							"host": [
+								"{{System_Active_Attack}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Expired ABS Blacklist",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "{{Access_Key_Header}}",
+								"value": "{{Access_Key}}"
+							},
+							{
+								"key": "{{Secret_Key_Header}}",
+								"value": "{{Secret_key}}"
+							}
+						],
+						"url": {
+							"raw": "{{System_Expired_Attack_List}}",
+							"host": [
+								"{{System_Expired_Attack_List}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Active ABS Blacklist Entry",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "{{Access_Key_Header}}",
+								"value": "{{Access_Key}}"
+							},
+							{
+								"key": "{{Secret_Key_Header}}",
+								"value": "{{Secret_key}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n        \"ips\": [],\n        \"cookies\": {},\n        \"oauth_tokens\": [\"xKY3GSzs5hpnmC8Greco70CMY18N\"],\n        \"api_keys\": [],\n        \"usernames\": []\n    }"
+						},
+						"url": {
+							"raw": "{{System_Attack_List}}",
+							"host": [
+								"{{System_Attack_List}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Bulk Delete Blacklist",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "{{Access_Key_Header}}",
+								"value": "{{Access_Key}}"
+							},
+							{
+								"key": "{{Secret_Key_Header}}",
+								"value": "{{Secret_key}}"
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"delete_all\": \"false\",\n\t\"delete_all_ips\": \"false\",\n\t\"delete_all_cookies\": \"false\",\n\t\"delete_all_oauth_tokens\": \"false\",\n\t\"delete_all_api_keys\": \"false\",\n\t\"delete_all_usernames\": \"false\"\n}\n"
+						},
+						"url": {
+							"raw": "{{System_Attack_List}}",
+							"host": [
+								"{{System_Attack_List}}"
+							]
+						},
+						"description": "DELETE API call to bulk delete of active blacklist IOCs"
+					},
+					"response": []
+				},
+				{
+					"name": "Attacks Enable/Disable Status",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "{{Access_Key_Header}}",
+								"value": "{{Access_Key}}",
+								"type": "text"
+							},
+							{
+								"key": "{{Secret_Key_Header}}",
+								"value": "{{Secret_key}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{System_Attack_Status}}",
+							"host": [
+								"{{System_Attack_Status}}"
+							]
+						},
+						"description": "API to enable abd diable APIs"
+					},
+					"response": []
+				},
+				{
+					"name": "Update Attacks Enable/Disable Status",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "{{Access_Key_Header}}",
+								"type": "text",
+								"value": "{{Access_Key}}"
+							},
+							{
+								"key": "{{Secret_Key_Header}}",
+								"type": "text",
+								"value": "{{Secret_key}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n \"attacks\": [ \n { \"attack_id\": \"1\", \"action\": \"enable\" }\n ]\n }"
+						},
+						"url": {
+							"raw": "{{System_Attack_Status}}",
+							"host": [
+								"{{System_Attack_Status}}"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "099cee14-de35-4562-b855-6f96ef79ee23",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "e3dc7b7e-efba-4b30-abaa-346c64d07fca",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"protocolProfileBehavior": {}
+}
