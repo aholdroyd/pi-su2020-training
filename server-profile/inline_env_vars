@@ -3,12 +3,12 @@ PI_VERSION=4.0.2
 # ASE variables
 ASE_MODE=inline
 ASE_ENABLE_ABS=true
-ASE_ABS_ENDPOINT={{abs1.pi-su2020.io}}:8080, {{abs2.pi-su2020.io}}:8080
+ASE_ABS_ENDPOINT=abs1.pi-su2020.com:8080, abs2.pi-su2020.com:8080
 ASE_XFF_ENABLE=true
 
 # AAD variables
 AAD_MODE=discovery
-ABS_HOST={{abs1.pi-su2020.io}}
+ABS_HOST=abs1.pi-su2020.com
 ABS_ACCESS_KEY=abs_ak
 ABS_SECRET_KEY=abs_sk
 ASE_HOST={{ase.pi-su2020.com}}
