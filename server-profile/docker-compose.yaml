@@ -13,12 +13,12 @@ services:
     networks:
       - pingnet
 
-  pi-aad-amt:
-    image: docker-registry.pi-su2020.com:5000/pingidentity/aad_amt:${PI_VERSION}
-    env_file:
-      - ./inline_env_vars
-    networks:
-      - pingnet
+#  pi-aad-amt:
+#    image: docker-registry.pi-su2020.com:5000/pingidentity/aad_amt:${PI_VERSION}
+#    env_file:
+#      - ./inline_env_vars
+#    networks:
+#      - pingnet
 
 networks:
     pingnet:
