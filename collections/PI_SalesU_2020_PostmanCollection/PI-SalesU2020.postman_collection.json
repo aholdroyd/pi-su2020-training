@@ -300,10 +300,10 @@
 							}
 						],
 						"url": {
-							"raw": "https://pi-abs1-su2020:8080/v4/abs/discovery",
+							"raw": "https://abs1.pi-su2020.com:8080/v4/abs/discovery",
 							"protocol": "https",
 							"host": [
-								"pi-abs1-su2020"
+								"abs1.pi-su2020.com"
 							],
 							"port": "8080",
 							"path": [
@@ -332,10 +332,10 @@
 							}
 						],
 						"url": {
-							"raw": "https://pi-abs1-su2020:8080/v4/abs/discovery?api=<api_id>",
+							"raw": "https://abs1.pi-su2020.com:8080/v4/abs/discovery?api=<api_id>",
 							"protocol": "https",
 							"host": [
-								"pi-abs1-su2020"
+								"abs1.pi-su2020.com"
 							],
 							"port": "8080",
 							"path": [
