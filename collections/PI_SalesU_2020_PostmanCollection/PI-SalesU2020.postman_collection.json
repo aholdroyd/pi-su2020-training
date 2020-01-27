@@ -20,13 +20,13 @@
 								"type": "text"
 							},
 							{
-								"key": "{{Access_Key_Header}}",
-								"value": "{{Access_Key}}",
+								"key": "{{ASE_Access_Key_Header}}",
+								"value": "{{ASE_Access_Key}}",
 								"type": "text"
 							},
 							{
-								"key": "{{Secret_Key_Header}}",
-								"value": "{{Secret_Key}}",
+								"key": "{{ASE_Secret_Key_Header}}",
+								"value": "{{ASE_Secret_Key}}",
 								"type": "text"
 							}
 						],
