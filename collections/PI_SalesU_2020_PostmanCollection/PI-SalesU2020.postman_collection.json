@@ -1,0 +1,3387 @@
+{
+	"info": {
+		"_postman_id": "d0854adb-c077-4dc2-bd6e-025eb5c9d1a2",
+		"name": "PI-SalesU2020 ",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Discovery - Inline",
+			"item": [
+				{
+					"name": "Create Disco Def - HTTPBin",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "{{Access_Key_Header}}",
+								"value": "{{Access_Key}}",
+								"type": "text"
+							},
+							{
+								"key": "{{Secret_Key_Header}}",
+								"value": "{{Secret_Key}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"api_metadata\": {\n        \"protocol\": \"https\",\n        \"url\": \"/anything\",\n        \"hostname\": \"*\",\n        \"cookie\": \"\",\n        \"cookie_idle_timeout\": \"200m\",\n        \"logout_api_enabled\": false,\n        \"cookie_persistence_enabled\": false,\n        \"oauth2_access_token\": true,\n        \"apikey_qs\": \"\",\n        \"apikey_header\": \"\",\n        \"login_url\": \"\",\n        \"enable_blocking\": true,\n        \"api_mapping\": {\n            \"internal_url\": \"\"\n        },\n        \"api_pattern_enforcement\": {\n            \"protocol_allowed\": \"\",\n            \"http_redirect\": {\n                \"response_code\": \"\",\n                \"response_def\": \"\",\n                \"https_url\": \"\"\n            },\n            \"methods_allowed\": [],\n            \"content_type_allowed\": \"\",\n            \"error_code\": \"401\",\n            \"error_def\": \"Unauthorized\",\n            \"error_message_body\": \"401 Unauthorized\"\n        },\n        \"flow_control\": {\n            \"client_spike_threshold\": \"0/second\",\n            \"server_connection_queueing\" : false\n        },\n        \"api_memory_size\": \"128mb\",\n        \"health_check\": false,\n        \"health_check_interval\": 60,\n        \"health_retry_count\": 4,\n        \"health_url\": \"/health\",\n        \"health_check_headers\": {},\n        \"server_ssl\": true,\n        \"servers\": [\n            {\n                \"host\": \"httpbin.org\",\n                \"port\": 443,\n            \t\"server_spike_threshold\": \"0/second\",\n            \t\"server_connection_quota\": 0\n            }\n        ],\n        \"decoy_config\":\n        {\n          \"decoy_enabled\": false,\n          \"response_code\" : 200,\n          \"response_def\" : \"\",\n          \"response_message\" : \"\",\n          \"decoy_subpaths\": [\n          ]\n       }\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{ase_api_url}}?api_id={{httpbin_disco_api_id}}",
+							"host": [
+								"{{ase_api_url}}"
+							],
+							"query": [
+								{
+									"key": "api_id",
+									"value": "{{httpbin_disco_api_id}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create API Def - P14C Management",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "{{ASE_Access_Key_Header}}",
+								"type": "text",
+								"value": "{{ASE_Access_Key}}"
+							},
+							{
+								"key": "{{ASE_Secret_Key_Header}}",
+								"type": "text",
+								"value": "{{ASE_Secret_Key}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"api_metadata\": {\n        \"protocol\": \"https\",\n        \"url\": \"/v1/environments/<your p14c environment id>\",\n        \"hostname\": \"<your_ase_host>\",\n        \"cookie\": \"\",\n        \"cookie_idle_timeout\": \"200m\",\n        \"logout_api_enabled\": false,\n        \"cookie_persistence_enabled\": false,\n        \"oauth2_access_token\": true,\n        \"apikey_qs\": \"\",\n        \"apikey_header\": \"\",\n        \"login_url\": \"\",\n        \"enable_blocking\": true,\n        \"api_mapping\": {\n            \"internal_url\": \"\"\n        },\n        \"api_pattern_enforcement\": {\n            \"protocol_allowed\": \"\",\n            \"http_redirect\": {\n                \"response_code\": \"\",\n                \"response_def\": \"\",\n                \"https_url\": \"\"\n            },\n            \"methods_allowed\": [],\n            \"content_type_allowed\": \"\",\n            \"error_code\": \"401\",\n            \"error_def\": \"Unauthorized\",\n            \"error_message_body\": \"401 Unauthorized\"\n        },\n        \"flow_control\": {\n            \"client_spike_threshold\": \"0/second\",\n            \"server_connection_queueing\" : false\n        },\n        \"api_memory_size\": \"128mb\",\n        \"health_check\": false,\n        \"health_check_interval\": 60,\n        \"health_retry_count\": 4,\n        \"health_url\": \"/health\",\n        \"health_check_headers\": {},\n        \"server_ssl\": true,\n        \"servers\": [\n            {\n                \"host\": \"api.pingone.com\",\n                \"port\": 443,\n            \t\"server_spike_threshold\": \"0/second\",\n            \t\"server_connection_quota\": 0\n            }\n        ],\n        \"decoy_config\":\n        {\n          \"decoy_enabled\": false,\n          \"response_code\" : 200,\n          \"response_def\" : \"\",\n          \"response_message\" : \"\",\n          \"decoy_subpaths\": [\n          ]\n       }\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{ase_api_url}}?api_id={{p14c_man_api_id}}",
+							"host": [
+								"{{ase_api_url}}"
+							],
+							"query": [
+								{
+									"key": "api_id",
+									"value": "{{p14c_man_api_id}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create API Def - P14C Auth",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "{{ASE_Access_Key_Header}}",
+								"type": "text",
+								"value": "{{ASE_Access_Key}}"
+							},
+							{
+								"key": "{{ASE_Secret_Key_Header}}",
+								"type": "text",
+								"value": "{{ASE_Secret_Key}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"api_metadata\": {\n        \"protocol\": \"https\",\n        \"url\": \"/<your p14c environment id>\",\n        \"hostname\": \"<your_ase_host>\",\n        \"cookie\": \"ST\",\n        \"cookie_idle_timeout\": \"200m\",\n        \"logout_api_enabled\": false,\n        \"cookie_persistence_enabled\": false,\n        \"oauth2_access_token\": false,\n        \"apikey_qs\": \"\",\n        \"apikey_header\": \"\",\n        \"login_url\": \"\",\n        \"enable_blocking\": true,\n        \"api_mapping\": {\n            \"internal_url\": \"\"\n        },\n        \"api_pattern_enforcement\": {\n            \"protocol_allowed\": \"\",\n            \"http_redirect\": {\n                \"response_code\": \"\",\n                \"response_def\": \"\",\n                \"https_url\": \"\"\n            },\n            \"methods_allowed\": [],\n            \"content_type_allowed\": \"\",\n            \"error_code\": \"401\",\n            \"error_def\": \"Unauthorized\",\n            \"error_message_body\": \"401 Unauthorized\"\n        },\n        \"flow_control\": {\n            \"client_spike_threshold\": \"0/second\",\n            \"server_connection_queueing\" : false\n        },\n        \"api_memory_size\": \"128mb\",\n        \"health_check\": false,\n        \"health_check_interval\": 60,\n        \"health_retry_count\": 4,\n        \"health_url\": \"/health\",\n        \"health_check_headers\": {},\n        \"server_ssl\": true,\n        \"servers\": [\n            {\n                \"host\": \"auth.pingone.com\",\n                \"port\": 443,\n            \t\"server_spike_threshold\": \"0/second\",\n            \t\"server_connection_quota\": 0\n            }\n        ],\n        \"decoy_config\":\n        {\n          \"decoy_enabled\": false,\n          \"response_code\" : 200,\n          \"response_def\" : \"\",\n          \"response_message\" : \"\",\n          \"decoy_subpaths\": [\n          ]\n       }\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{ase_api_url}}?api_id={{p14c_auth_api_id}}",
+							"host": [
+								"{{ase_api_url}}"
+							],
+							"query": [
+								{
+									"key": "api_id",
+									"value": "{{p14c_auth_api_id}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create API Def - P14C Auth AS",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "{{ASE_Access_Key_Header}}",
+								"type": "text",
+								"value": "{{ASE_Access_Key}}"
+							},
+							{
+								"key": "{{ASE_Secret_Key_Header}}",
+								"type": "text",
+								"value": "{{ASE_Secret_Key}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"api_metadata\": {\n        \"protocol\": \"https\",\n        \"url\": \"/<your p14c environment id>/as\",\n        \"hostname\": \"<your_ase_host>\",\n        \"cookie\": \"\",\n        \"cookie_idle_timeout\": \"200m\",\n        \"logout_api_enabled\": false,\n        \"cookie_persistence_enabled\": false,\n        \"oauth2_access_token\": true,\n        \"apikey_qs\": \"\",\n        \"apikey_header\": \"\",\n        \"login_url\": \"\",\n        \"enable_blocking\": true,\n        \"api_mapping\": {\n            \"internal_url\": \"\"\n        },\n        \"api_pattern_enforcement\": {\n            \"protocol_allowed\": \"\",\n            \"http_redirect\": {\n                \"response_code\": \"\",\n                \"response_def\": \"\",\n                \"https_url\": \"\"\n            },\n            \"methods_allowed\": [],\n            \"content_type_allowed\": \"\",\n            \"error_code\": \"401\",\n            \"error_def\": \"Unauthorized\",\n            \"error_message_body\": \"401 Unauthorized\"\n        },\n        \"flow_control\": {\n            \"client_spike_threshold\": \"0/second\",\n            \"server_connection_queueing\" : false\n        },\n        \"api_memory_size\": \"128mb\",\n        \"health_check\": false,\n        \"health_check_interval\": 60,\n        \"health_retry_count\": 4,\n        \"health_url\": \"/health\",\n        \"health_check_headers\": {},\n        \"server_ssl\": true,\n        \"servers\": [\n            {\n                \"host\": \"auth.pingone.com\",\n                \"port\": 443,\n            \t\"server_spike_threshold\": \"0/second\",\n            \t\"server_connection_quota\": 0\n            }\n        ],\n        \"decoy_config\":\n        {\n          \"decoy_enabled\": false,\n          \"response_code\" : 200,\n          \"response_def\" : \"\",\n          \"response_message\" : \"\",\n          \"decoy_subpaths\": [\n          ]\n       }\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{ase_api_url}}?api_id={{p14c_auth_api_id}}_as",
+							"host": [
+								"{{ase_api_url}}"
+							],
+							"query": [
+								{
+									"key": "api_id",
+									"value": "{{p14c_auth_api_id}}_as"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create API Def - Decoy OutContext",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "{{ASE_Access_Key_Header}}",
+								"type": "text",
+								"value": "{{ASE_Access_Key}}"
+							},
+							{
+								"key": "{{ASE_Secret_Key_Header}}",
+								"type": "text",
+								"value": "{{ASE_Secret_Key}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"api_metadata\": {\n        \"protocol\": \"http\",\n        \"url\": \"/account\",\n        \"hostname\": \"cleggett-ase.pi-su2020.com\",\n        \"cookie\": \"\",\n        \"cookie_idle_timeout\": \"200m\",\n        \"logout_api_enabled\": false,\n        \"cookie_persistence_enabled\": false,\n        \"oauth2_access_token\": false,\n        \"apikey_qs\": \"\",\n        \"apikey_header\": \"\",\n        \"login_url\": \"\",\n        \"enable_blocking\": true,\n        \"api_mapping\": {\n            \"internal_url\": \"\"\n        },\n        \"api_pattern_enforcement\": {\n            \"protocol_allowed\": \"\",\n            \"http_redirect\": {\n                \"response_code\": \"\",\n                \"response_def\": \"\",\n                \"https_url\": \"\"\n            },\n            \"methods_allowed\": [],\n            \"content_type_allowed\": \"\",\n            \"error_code\": \"401\",\n            \"error_def\": \"Unauthorized\",\n            \"error_message_body\": \"401 Unauthorized\"\n        },\n        \"flow_control\": {\n            \"client_spike_threshold\": \"0/second\",\n            \"server_connection_queueing\" : false\n        },\n        \"api_memory_size\": \"32mb\",\n        \"health_check\": false,\n        \"health_check_interval\": 60,\n        \"health_retry_count\": 4,\n        \"health_url\": \"\",\n        \"health_check_headers\": {},\n        \"server_ssl\": false,\n        \"servers\": [\n        ],\n        \"decoy_config\":\n        {\n          \"decoy_enabled\": true,\n          \"response_code\" : 200,\n          \"response_def\" : \"OK\",\n          \"response_message\" : \"OK - Whoopsies\",\n          \"decoy_subpaths\": [\n          ]\n       }\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{ase_api_url}}?api_id={{api_id_prefix}}_decoy_outcxt",
+							"host": [
+								"{{ase_api_url}}"
+							],
+							"query": [
+								{
+									"key": "api_id",
+									"value": "{{api_id_prefix}}_decoy_outcxt"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List APIs - ASE",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "{{ASE_Access_Key_Header}}",
+								"value": "{{ASE_Access_Key}}",
+								"type": "text"
+							},
+							{
+								"key": "{{ASE_Secret_Key_Header}}",
+								"value": "{{ASE_Secret_Key}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{ase_api_url}}",
+							"host": [
+								"{{ase_api_url}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List Discovered APIs - ABS",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "{{ABS_Access_Key_Header}}",
+								"value": "{{ABS_Access_Key}}",
+								"type": "text"
+							},
+							{
+								"key": "{{ABS_Secret_Key_Header}}",
+								"value": "{{ABS_Secret_Key}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://pi-abs1-su2020:8080/v4/abs/discovery",
+							"protocol": "https",
+							"host": [
+								"pi-abs1-su2020"
+							],
+							"port": "8080",
+							"path": [
+								"v4",
+								"abs",
+								"discovery"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Detail Discovered API - ABS",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "{{ABS_Access_Key_Header}}",
+								"type": "text",
+								"value": "{{ABS_Access_Key}}"
+							},
+							{
+								"key": "{{ABS_Secret_Key_Header}}",
+								"type": "text",
+								"value": "{{ABS_Secret_Key}}"
+							}
+						],
+						"url": {
+							"raw": "https://pi-abs1-su2020:8080/v4/abs/discovery?api=<api_id>",
+							"protocol": "https",
+							"host": [
+								"pi-abs1-su2020"
+							],
+							"port": "8080",
+							"path": [
+								"v4",
+								"abs",
+								"discovery"
+							],
+							"query": [
+								{
+									"key": "api",
+									"value": "<api_id>"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "851a4825-1563-4a62-aa19-fea6618b8ff7",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "a8db4b36-6556-45e6-bd16-aed73d722345",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "HTTPBin Requests - Discovery",
+			"item": [
+				{
+					"name": "HTTPBin API Request",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "e8cf824a-43b3-4597-9f76-c0af186899ed",
+								"exec": [
+									"pm.test(\"Success - 200 OK\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{$randomBankAccount}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-Forwarded-For",
+								"type": "text",
+								"value": "{{$randomIP}}"
+							}
+						],
+						"url": {
+							"raw": "https://{{ase_host}}:{{ase_https_port}}/anything",
+							"protocol": "https",
+							"host": [
+								"{{ase_host}}"
+							],
+							"port": "{{ase_https_port}}",
+							"path": [
+								"anything"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "HTTPBin API Request - SubPath2",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "ccf1d817-732e-4bd0-92d6-9d3bfae92f13",
+								"exec": [
+									"pm.test(\"Success - 200 OK\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{$randomBankAccount}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-Forwarded-For",
+								"type": "text",
+								"value": "{{$randomIP}}"
+							}
+						],
+						"url": {
+							"raw": "https://{{ase_host}}:{{ase_https_port}}/anything/subpath2",
+							"protocol": "https",
+							"host": [
+								"{{ase_host}}"
+							],
+							"port": "{{ase_https_port}}",
+							"path": [
+								"anything",
+								"subpath2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "HTTPBin API Request - SubPath3",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "da115a86-d6f5-480e-a7ec-2a3b096b8f4d",
+								"exec": [
+									"pm.test(\"Success - 200 OK\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{$randomBankAccount}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-Forwarded-For",
+								"type": "text",
+								"value": "{{$randomIP}}"
+							}
+						],
+						"url": {
+							"raw": "https://{{ase_host}}:{{ase_https_port}}/anything/subpath2/subpath3",
+							"protocol": "https",
+							"host": [
+								"{{ase_host}}"
+							],
+							"port": "{{ase_https_port}}",
+							"path": [
+								"anything",
+								"subpath2",
+								"subpath3"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Training",
+			"item": [
+				{
+					"name": "HttpBin",
+					"item": [
+						{
+							"name": "Get Access Token",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "b0acd9c8-8944-426d-886a-dd059a59522a",
+										"exec": [
+											"var jsonData = JSON.parse(responseBody);",
+											"postman.setEnvironmentVariable(\"p14cAccessToken\", jsonData.access_token);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "grant_type",
+											"value": "client_credentials",
+											"type": "text"
+										},
+										{
+											"key": "client_id",
+											"value": "{{adminAppID}}",
+											"type": "text"
+										},
+										{
+											"key": "client_secret",
+											"value": "{{adminAppSecret}}",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://auth.pingone.com/{{envID}}/as/token",
+									"protocol": "https",
+									"host": [
+										"auth",
+										"pingone",
+										"com"
+									],
+									"path": [
+										"{{envID}}",
+										"as",
+										"token"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get HTTPBin Anything",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{p14cAccessToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "X-Forwarded-For",
+										"value": "{{clientIP}}",
+										"type": "text"
+									},
+									{
+										"key": "User-Agent",
+										"value": "{{userAgent}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{httpbin_train_api}}",
+									"host": [
+										"{{httpbin_train_api}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get HTTPBin Anything SubPath 2",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{p14cAccessToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"type": "text",
+										"value": "application/json"
+									},
+									{
+										"key": "X-Forwarded-For",
+										"type": "text",
+										"value": "{{clientIP}}"
+									},
+									{
+										"key": "User-Agent",
+										"type": "text",
+										"value": "{{userAgent}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"data\" : \"something super important\"\n}"
+								},
+								"url": {
+									"raw": "{{httpbin_train_api}}/subpath2",
+									"host": [
+										"{{httpbin_train_api}}"
+									],
+									"path": [
+										"subpath2"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get HTTPBin Anything SubPath 3",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{p14cAccessToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"type": "text",
+										"value": "application/json"
+									},
+									{
+										"key": "X-Forwarded-For",
+										"type": "text",
+										"value": "{{clientIP}}"
+									},
+									{
+										"key": "User-Agent",
+										"type": "text",
+										"value": "{{userAgent}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{httpbin_train_api}}/subpath2/subpath3",
+									"host": [
+										"{{httpbin_train_api}}"
+									],
+									"path": [
+										"subpath2",
+										"subpath3"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "PUT HTTPBin Anything SubPath 3",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{p14cAccessToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"type": "text",
+										"value": "application/json"
+									},
+									{
+										"key": "X-Forwarded-For",
+										"type": "text",
+										"value": "{{clientIP}}"
+									},
+									{
+										"key": "User-Agent",
+										"type": "text",
+										"value": "{{userAgent}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"data\" : \"Something not really all that important\"\n}"
+								},
+								"url": {
+									"raw": "{{httpbin_train_api}}/subpath2/subpath3",
+									"host": [
+										"{{httpbin_train_api}}"
+									],
+									"path": [
+										"subpath2",
+										"subpath3"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "P14C - Mangement",
+					"item": [
+						{
+							"name": "Get Access Token",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "b0acd9c8-8944-426d-886a-dd059a59522a",
+										"exec": [
+											"var jsonData = JSON.parse(responseBody);",
+											"postman.setEnvironmentVariable(\"p14cAccessToken\", jsonData.access_token);",
+											"",
+											"pm.test(\"Success - 200 OK\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "grant_type",
+											"value": "client_credentials",
+											"type": "text"
+										},
+										{
+											"key": "client_id",
+											"value": "{{adminAppID}}",
+											"type": "text"
+										},
+										{
+											"key": "client_secret",
+											"value": "{{adminAppSecret}}",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://auth.pingone.com/{{envID}}/as/token",
+									"protocol": "https",
+									"host": [
+										"auth",
+										"pingone",
+										"com"
+									],
+									"path": [
+										"{{envID}}",
+										"as",
+										"token"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get All P14C Users",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "12080e62-2c53-416f-a486-41211daaf8b0",
+										"exec": [
+											"pm.test(\"Success - 200 OK\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{p14cAccessToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "X-Forwarded-For",
+										"value": "{{clientIP}}",
+										"type": "text"
+									},
+									{
+										"key": "User-Agent",
+										"value": "{{userAgent}}",
+										"type": "text"
+									},
+									{
+										"key": "X-Forwarded-Host",
+										"value": "api.pingone.com",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{p14c_ApiPath}}/environments/{{envID}}/users",
+									"host": [
+										"{{p14c_ApiPath}}"
+									],
+									"path": [
+										"environments",
+										"{{envID}}",
+										"users"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get All P14C Populations",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "9ff1d493-2a43-47d1-ac3f-0a5503641eda",
+										"exec": [
+											"pm.test(\"Success - 200 OK\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{p14cAccessToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "X-Forwarded-Host",
+										"value": "api.pingone.com",
+										"type": "text"
+									},
+									{
+										"key": "X-Forwarded-For",
+										"value": "{{clientIP}}",
+										"type": "text"
+									},
+									{
+										"key": "User-Agent",
+										"value": "{{userAgent}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{p14c_ApiPath}}/environments/{{envID}}/populations",
+									"host": [
+										"{{p14c_ApiPath}}"
+									],
+									"path": [
+										"environments",
+										"{{envID}}",
+										"populations"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get All P14C Applications",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "d7f88482-254b-4b51-85be-4671f20e9fb3",
+										"exec": [
+											"pm.test(\"Success - 200 OK\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{p14cAccessToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "X-Forwarded-Host",
+										"value": "api.pingone.com",
+										"type": "text"
+									},
+									{
+										"key": "X-Forwarded-For",
+										"value": "{{clientIP}}",
+										"type": "text"
+									},
+									{
+										"key": "User-Agent",
+										"value": "{{userAgent}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{p14c_ApiPath}}/environments/{{envID}}/applications",
+									"host": [
+										"{{p14c_ApiPath}}"
+									],
+									"path": [
+										"environments",
+										"{{envID}}",
+										"applications"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "81850298-256c-4d79-bc02-c5a7bf168c14",
+								"type": "text/javascript",
+								"exec": [
+									"var requestcount = pm.variables.get(\"requestcount\");",
+									"//var firstIteration = pm.variables.get(\"requestcount\");",
+									"console.log(\"requestcount: \" + requestcount);",
+									"",
+									"//if (pm.info.iteration == \"0\" && requestcount != \"0\") {",
+									"//    requestcount = \"0\";",
+									"//    firstIteration = \"true\"",
+									"//    pm.variables.set(\"requestcount\", requestcount);",
+									"//    pm.variables.set(\"first_iteration\", \"true\")l",
+									"//    console.log(\"Iteration count is zero and requestcount is not zero!\");",
+									"//} ",
+									"",
+									"if ((pm.info.iteration != requestcount) ) {",
+									"    console.log(\"Iteration count is zero and requestcount is not zero!\");",
+									"    var random = _.random(0, 7);",
+									"    var userAgentArray = [ ",
+									"        \"Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.7.8) Gecko/20050513 Galeon/1.3.21\",",
+									"        \"Mozilla/5.0 (Windows; U; Windows NT 5.2; fr-FR; rv:1.7.8) Gecko/20050511 Firefox/1.0.4\",",
+									"        \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36\",",
+									"        \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.95 Safari/537.36\",",
+									"        \"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36\",",
+									"        \"Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36\",",
+									"        \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_3) AppleWebKit/602.4.8 (KHTML, like Gecko) Version/10.0.3 Safari/602.4.8\",",
+									"        \"Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:50.0) Gecko/20100101 Firefox/50.0\"",
+									"    ];",
+									"    ",
+									"    pm.environment.set(\"userAgent\", userAgentArray[random]);",
+									"    ",
+									"    // Generate random IP Address - Request Header - X-Forwarded-For",
+									"    var ipFirstPos = _.random(0, 255);",
+									"    var ipSecondPos = _.random(0, 255);",
+									"    var ipThirdPos = _.random(0, 255);",
+									"    var ipForthPos = _.random(0, 255);",
+									"    ",
+									"    var randomClientIP = ipFirstPos + \".\" + ipSecondPos + \".\" + ipThirdPos + \".\" + ipForthPos;",
+									"    pm.environment.set(\"clientIP\", randomClientIP);",
+									"    ",
+									"    // Get current count",
+									"    //var count = pm.environment.get(\"count\");",
+									"    ",
+									"    // increment count",
+									"    pm.variables.set(\"requestcount\", pm.info.iteration);",
+									"    ",
+									"}  ",
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "2ba74bd5-9ea9-4917-84dc-3269d46b442b",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "P14C - Auth",
+					"item": [
+						{
+							"name": "Authorize (authorization_code)",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "56e70a10-42c0-4c0c-b779-35c23d20426e",
+										"exec": [
+											"var sdk = require('postman-collection');",
+											"pm.test(\"Status - 302 Found\", function () {",
+											"    pm.response.to.have.status(302);",
+											"",
+											"    var headerValue = pm.response.headers.get(\"Location\");",
+											"    var locationUrl = sdk.Url.parse(headerValue);",
+											"    ",
+											"    if(locationUrl.query[0].key == \"flowId\") {",
+											"        //pm.environment.set('sessionToken', pm.cookies.get('ST'));",
+											"        pm.environment.set(\"flowID\", locationUrl.query[0].value);",
+											"    } ",
+											"",
+											"}); "
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"followRedirects": false
+							},
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/x-www-form-urlencoded"
+									},
+									{
+										"key": "X-Forwarded-For",
+										"value": "{{clientIP}}",
+										"type": "text"
+									},
+									{
+										"key": "User-Agent",
+										"value": "{{userAgent}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "response_type",
+											"value": "code",
+											"description": "Required",
+											"type": "text"
+										},
+										{
+											"key": "client_id",
+											"value": "{{adminAppID}}",
+											"description": "Required",
+											"type": "text"
+										},
+										{
+											"key": "redirect_uri",
+											"value": "https://www.getpostman.com/oauth2/callback",
+											"description": "Required",
+											"type": "text"
+										},
+										{
+											"key": "scope",
+											"value": "openid profile email p1:read:user",
+											"description": "Required - must have Grant for requested scopes",
+											"type": "text"
+										},
+										{
+											"key": "state",
+											"value": "<state value>",
+											"description": "Recommended",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "response_mode",
+											"value": "fragment",
+											"description": "Optional ( query | fragment )",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "nonce",
+											"value": "<nonce value>",
+											"description": "Optional",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "prompt",
+											"value": "login",
+											"description": "Optional ( none | login )",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "max_age",
+											"value": "3600",
+											"description": "Optional - uses seconds",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "acr_values",
+											"value": "Single_Factor",
+											"description": "Optional - use Sign-on Policy names (space-delimited)",
+											"type": "text",
+											"disabled": true
+										}
+									]
+								},
+								"url": {
+									"raw": "{{p14c_AuthPath}}/{{envID}}/as/authorize",
+									"host": [
+										"{{p14c_AuthPath}}"
+									],
+									"path": [
+										"{{envID}}",
+										"as",
+										"authorize"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "READ Flow",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "d32ba6ba-d9b3-4d5c-b23e-9d7a8a601b01",
+										"exec": [
+											"pm.test(\"Status - 200 OK\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "X-Forwarded-For",
+										"value": "{{clientIP}}",
+										"type": "text"
+									},
+									{
+										"key": "User-Agent",
+										"value": "{{userAgent}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{p14c_AuthPath}}/{{envID}}/flows/{{flowID}}",
+									"host": [
+										"{{p14c_AuthPath}}"
+									],
+									"path": [
+										"{{envID}}",
+										"flows",
+										"{{flowID}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Check Username/Password",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "a47367cf-f47d-4907-83f1-58162ff5fc0e",
+										"exec": [
+											"pm.test(\"Status - 200 OK\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/vnd.pingidentity.usernamePassword.check+json"
+									},
+									{
+										"key": "X-Forwarded-For",
+										"value": "{{clientIP}}",
+										"type": "text"
+									},
+									{
+										"key": "User-Agent",
+										"value": "{{userAgent}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"username\": \"cleggett+salesu2020@pingidentity.com\",\n    \"password\": \"2Federate@2\"\n}"
+								},
+								"url": {
+									"raw": "{{p14c_AuthPath}}/{{envID}}/flows/{{flowID}}",
+									"host": [
+										"{{p14c_AuthPath}}"
+									],
+									"path": [
+										"{{envID}}",
+										"flows",
+										"{{flowID}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Resume",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "60b37dbe-5e4d-4cb3-bf35-5ce3a600bbd6",
+										"exec": [
+											"var sdk = require('postman-collection');",
+											"pm.test(\"Status - 302 Found\", function () {",
+											"    pm.response.to.have.status(302);",
+											"    var headerValue = pm.response.headers.get(\"Location\");",
+											"    var locationUrl = sdk.Url.parse(headerValue);",
+											"    if(locationUrl.query[0].key == \"code\") {",
+											"        ",
+											"        pm.environment.set(\"authCode\", locationUrl.query[0].value);",
+											"    }     ",
+											"}); "
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"followRedirects": false
+							},
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Cookie",
+										"value": "ST={{sessionToken}}",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "X-Forwarded-For",
+										"value": "{{clientIP}}",
+										"type": "text"
+									},
+									{
+										"key": "User-Agent",
+										"value": "{{userAgent}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{p14c_AuthPath}}/{{envID}}/as/resume?flowId={{flowID}}",
+									"host": [
+										"{{p14c_AuthPath}}"
+									],
+									"path": [
+										"{{envID}}",
+										"as",
+										"resume"
+									],
+									"query": [
+										{
+											"key": "flowId",
+											"value": "{{flowID}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Token (authorization_code)",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "d7e03e64-fc15-4671-b8f1-a0f02aca147a",
+										"exec": [
+											"pm.test(\"Status - 200 OK\", function () {",
+											"    pm.response.to.have.status(200);",
+											"    var jsonData = JSON.parse(responseBody);",
+											"    postman.setEnvironmentVariable(\"p14c_auth_accessToken\", jsonData.access_token);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "9e098983-7a0f-4f94-9162-15259e7a67fd",
+										"exec": [
+											"const jar = pm.cookies.jar();",
+											"jar.unset(\"https://\" + pm.environment.get('ase_host') + \"/\" + pm.environment.get('envID'), 'ST', function (error) {",
+											"    console.log(error);   ",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/x-www-form-urlencoded"
+									},
+									{
+										"key": "X-Forwarded-For",
+										"value": "{{clientIP}}",
+										"type": "text"
+									},
+									{
+										"key": "User-Agent",
+										"value": "{{userAgent}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "grant_type",
+											"value": "authorization_code",
+											"description": "Required",
+											"type": "text"
+										},
+										{
+											"key": "code",
+											"value": "{{authCode}}",
+											"description": "Required",
+											"type": "text"
+										},
+										{
+											"key": "redirect_uri",
+											"value": "https://www.getpostman.com/oauth2/callback",
+											"description": "Required",
+											"type": "text"
+										},
+										{
+											"key": "client_id",
+											"value": "{{adminAppID}}",
+											"description": "(For CLIENT_SECRET_POST; if included with Basic Auth, must match Header value)",
+											"type": "text"
+										},
+										{
+											"key": "client_secret",
+											"value": "{{adminAppSecret}}",
+											"description": "(For for CLIENT_SECRET_POST)",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{p14c_AuthPath}}/{{envID}}/as/token",
+									"host": [
+										"{{p14c_AuthPath}}"
+									],
+									"path": [
+										"{{envID}}",
+										"as",
+										"token"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Userinfo",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "950dbab4-cd1e-4402-87e8-529e35e63446",
+										"exec": [
+											"pm.test(\"Status - 200 OK\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{p14c_auth_accessToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "X-Forwarded-For",
+										"value": "{{clientIP}}",
+										"type": "text"
+									},
+									{
+										"key": "User-Agent",
+										"value": "{{userAgent}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{p14c_AuthPath}}/{{envID}}/as/userinfo",
+									"host": [
+										"{{p14c_AuthPath}}"
+									],
+									"path": [
+										"{{envID}}",
+										"as",
+										"userinfo"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "CREATE User",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "308d5bfb-7bc8-4ce7-961f-31501fe89099",
+										"exec": [
+											"pm.test(\"Status - 201 OK\", function () {",
+											"    pm.response.to.have.status(201);",
+											"    var jsonData = JSON.parse(responseBody);",
+											"    pm.environment.set(\"userID\", jsonData.id);",
+											"    pm.environment.set(\"userName\", jsonData.username);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{p14c_auth_accessToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "content-type",
+										"value": "application/json"
+									},
+									{
+										"key": "X-Forwarded-For",
+										"value": "{{clientIP}}",
+										"type": "text"
+									},
+									{
+										"key": "User-Agent",
+										"value": "{{userAgent}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\": \"postman-pi-training@example.com\",\n    \"name\": {\n        \"given\": \"PI-Training\",\n        \"family\": \"Postman\"\n    },\n    \"population\": {\n        \"id\": \"{{popID}}\"\n    },\n    \"username\": \"postmantraininguser\"\n}"
+								},
+								"url": {
+									"raw": "{{p14c_ApiPath}}/environments/{{envID}}/users",
+									"host": [
+										"{{p14c_ApiPath}}"
+									],
+									"path": [
+										"environments",
+										"{{envID}}",
+										"users"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "READ One User",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "17b674c8-46e2-47c3-b96c-bca07527361f",
+										"exec": [
+											"pm.test(\"Status - 200 OK\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "045d07f0-3d58-47f5-8efe-9d9a9450842b",
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{p14c_auth_accessToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "X-Forwarded-For",
+										"value": "{{clientIP}}",
+										"type": "text"
+									},
+									{
+										"key": "User-Agent",
+										"value": "{{userAgent}}",
+										"type": "text"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "https://api.pingone.com/v1/environments/{{envID}}/users/{{userID}}",
+									"protocol": "https",
+									"host": [
+										"api",
+										"pingone",
+										"com"
+									],
+									"path": [
+										"v1",
+										"environments",
+										"{{envID}}",
+										"users",
+										"{{userID}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "UPDATE User (Put)",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "b08cc790-b60f-4277-a8b2-6dd1ef39a219",
+										"exec": [
+											"pm.test(\"Status - 200 OK\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{p14c_auth_accessToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [
+									{
+										"key": "content-type",
+										"value": "application/json"
+									},
+									{
+										"key": "User-Agent",
+										"value": "{{userAgent}}",
+										"type": "text"
+									},
+									{
+										"key": "X-Forwarded-For",
+										"value": "{{clientIP}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"username\": \"{{userName}}\",\n    \"name\": {\n        \"formatted\": \"Formatted Name\",\n        \"given\": \"Put\",\n        \"middle\": \"Ut\",\n        \"family\": \"T\",\n        \"honorificPrefix\": \"Dr.\",\n        \"honorificSuffix\": \"IV\"\n    },\n    \"nickname\": \"Putty\",\n    \"title\": \"The Hobbit\",\n    \"preferredLanguage\": \"en-gb;q=0.8, en;q=0.7\",\n    \"locale\": \"en-gb\",\n    \"email\": \"PUTTED@example.com\",\n    \"primaryPhone\": \"+1.2225554444\",\n    \"mobilePhone\": \"+1.4445552222\",\n    \"photo\": {\n        \"href\": \"https://fake.com\"\n    },\n    \"address\": {\n        \"streetAddress\": \"123 Fake Street\",\n        \"locality\": \"Springfield\",\n        \"region\": \"Somewhere\",\n        \"postalCode\": \"78701\",\n        \"countryCode\": \"US\"\n    },\n    \"accountId\": \"5\",\n    \"type\": \"tele\",\n    \"timezone\": \"America/Los_Angeles\"\n}"
+								},
+								"url": {
+									"raw": "{{p14c_ApiPath}}/environments/{{envID}}/users/{{userID}}",
+									"host": [
+										"{{p14c_ApiPath}}"
+									],
+									"path": [
+										"environments",
+										"{{envID}}",
+										"users",
+										"{{userID}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "UPDATE User (Patch)",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "a66b9cb8-899d-4868-bd7e-beabb1938d65",
+										"exec": [
+											"pm.test(\"Status - 200 OK\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{p14c_auth_accessToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "content-type",
+										"value": "application/json"
+									},
+									{
+										"key": "X-Forwarded-For",
+										"type": "text",
+										"value": "{{clientIP}}"
+									},
+									{
+										"key": "User-Agent",
+										"type": "text",
+										"value": "{{userAgent}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"username\": \"{{userName}}\",\n    \"name\": {\n        \"formatted\": \"Formatted Name\",\n        \"given\": \"Patch\",\n        \"middle\": \"Atch\",\n        \"family\": \"Tch\",\n        \"honorificPrefix\": \"Mr.\",\n        \"honorificSuffix\": \"III\"\n    },\n    \"nickname\": \"Patchy\",\n    \"title\": \"There and Back Again\",\n    \"preferredLanguage\": \"en-gb;q=0.8, en;q=0.7\",\n    \"locale\": \"en-gb\",\n    \"email\": \"PATCHED@example.com\",\n    \"primaryPhone\": \"+1.1115553333\",\n    \"mobilePhone\": \"+1.3335551111\",\n    \"photo\": {\n        \"href\": \"https://who.cares.com\"\n    },\n    \"address\": {\n        \"streetAddress\": \"123 Fake Street\",\n        \"locality\": \"Springfield\",\n        \"region\": \"Somewhere\",\n        \"postalCode\": \"78701\",\n        \"countryCode\": \"US\"\n    },\n    \"accountId\": \"5\",\n    \"type\": \"tele\",\n    \"timezone\": \"America/New_York\"\n}"
+								},
+								"url": {
+									"raw": "{{p14c_ApiPath}}/environments/{{envID}}/users/{{userID}}",
+									"host": [
+										"{{p14c_ApiPath}}"
+									],
+									"path": [
+										"environments",
+										"{{envID}}",
+										"users",
+										"{{userID}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "READ One User",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "17b674c8-46e2-47c3-b96c-bca07527361f",
+										"exec": [
+											"pm.test(\"Status - 200 OK\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{p14c_auth_accessToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "User-Agent",
+										"value": "{{userAgent}}",
+										"type": "text"
+									},
+									{
+										"key": "X-Forwarded-For",
+										"value": "{{clientIP}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{p14c_ApiPath}}/environments/{{envID}}/users?filter=username eq \"postmantraininguser\"",
+									"host": [
+										"{{p14c_ApiPath}}"
+									],
+									"path": [
+										"environments",
+										"{{envID}}",
+										"users"
+									],
+									"query": [
+										{
+											"key": "filter",
+											"value": "username eq \"postmantraininguser\""
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "DELETE User",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "f944c021-836f-4e37-bd31-a93d2441c5bb",
+										"exec": [
+											"pm.test(\"Status - 204 OK\", function () {",
+											"    pm.response.to.have.status(204);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{p14c_auth_accessToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "X-Forwarded-For",
+										"type": "text",
+										"value": "{{clientIP}}"
+									},
+									{
+										"key": "User-Agent",
+										"type": "text",
+										"value": "{{userAgent}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{p14c_ApiPath}}/environments/{{envID}}/users/{{userID}}",
+									"host": [
+										"{{p14c_ApiPath}}"
+									],
+									"path": [
+										"environments",
+										"{{envID}}",
+										"users",
+										"{{userID}}"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "f186fdb8-4143-4328-b7c9-91cbad936b38",
+								"type": "text/javascript",
+								"exec": [
+									"var requestcount = pm.variables.get(\"requestcount\");",
+									"//console.log(\"requestcount: \" + requestcount);",
+									"",
+									"if ((pm.info.iteration != requestcount) ) {",
+									"    console.log(\"Iteration count is zero and requestcount is not zero!\");",
+									"    var random = _.random(0, 7);",
+									"    var userAgentArray = [ ",
+									"        \"Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.7.8) Gecko/20050513 Galeon/1.3.21\",",
+									"        \"Mozilla/5.0 (Windows; U; Windows NT 5.2; fr-FR; rv:1.7.8) Gecko/20050511 Firefox/1.0.4\",",
+									"        \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36\",",
+									"        \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.95 Safari/537.36\",",
+									"        \"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36\",",
+									"        \"Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36\",",
+									"        \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_3) AppleWebKit/602.4.8 (KHTML, like Gecko) Version/10.0.3 Safari/602.4.8\",",
+									"        \"Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:50.0) Gecko/20100101 Firefox/50.0\"",
+									"    ];",
+									"    ",
+									"    pm.environment.set(\"userAgent\", userAgentArray[random]);",
+									"    ",
+									"    // Generate random IP Address - Request Header - X-Forwarded-For",
+									"    var ipFirstPos = _.random(0, 255);",
+									"    var ipSecondPos = _.random(0, 255);",
+									"    var ipThirdPos = _.random(0, 255);",
+									"    var ipForthPos = _.random(0, 255);",
+									"    ",
+									"    var randomClientIP = ipFirstPos + \".\" + ipSecondPos + \".\" + ipThirdPos + \".\" + ipForthPos;",
+									"    pm.environment.set(\"clientIP\", randomClientIP);",
+									"    ",
+									"    // increment count",
+									"    pm.variables.set(\"requestcount\", pm.info.iteration);",
+									"    ",
+									"}  ",
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "1a5a92a0-65f2-4137-a881-1a11bcd62de2",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "67ad3e00-dcdb-4225-b2cb-8995f0eb5db0",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "5e4c6567-98e1-4161-8b8c-c8dd2fbfc880",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Attacks",
+			"item": [
+				{
+					"name": "Stolen Token Attack",
+					"item": [
+						{
+							"name": "Stolen Token Prep",
+							"item": [
+								{
+									"name": "Get Access Token - STP",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "b0acd9c8-8944-426d-886a-dd059a59522a",
+												"exec": [
+													"var jsonData = JSON.parse(responseBody);",
+													"postman.setEnvironmentVariable(\"p14cStolenToken\", jsonData.access_token);",
+													"",
+													"pm.test(\"Success - 200 OK\", function () {",
+													"    pm.response.to.have.status(200);",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"auth": {
+											"type": "noauth"
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"name": "Content-Type",
+												"value": "application/x-www-form-urlencoded",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "urlencoded",
+											"urlencoded": [
+												{
+													"key": "grant_type",
+													"value": "client_credentials",
+													"type": "text"
+												},
+												{
+													"key": "client_id",
+													"value": "{{adminAppID}}",
+													"type": "text"
+												},
+												{
+													"key": "client_secret",
+													"value": "{{adminAppSecret}}",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "https://auth.pingone.com/{{envID}}/as/token",
+											"protocol": "https",
+											"host": [
+												"auth",
+												"pingone",
+												"com"
+											],
+											"path": [
+												"{{envID}}",
+												"as",
+												"token"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Get All P14C Users - STP",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "12080e62-2c53-416f-a486-41211daaf8b0",
+												"exec": [
+													"pm.test(\"Success - 200 OK\", function () {",
+													"    pm.response.to.have.status(200);",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{p14cStolenToken}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [
+											{
+												"key": "X-Forwarded-For",
+												"value": "{{clientIP}}",
+												"type": "text"
+											},
+											{
+												"key": "User-Agent",
+												"value": "{{userAgent}}",
+												"type": "text"
+											},
+											{
+												"key": "X-Forwarded-Host",
+												"value": "api.pingone.com",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{p14c_ApiPath}}/environments/{{envID}}/users",
+											"host": [
+												"{{p14c_ApiPath}}"
+											],
+											"path": [
+												"environments",
+												"{{envID}}",
+												"users"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Get All P14C Populations - STP",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "9ff1d493-2a43-47d1-ac3f-0a5503641eda",
+												"exec": [
+													"pm.test(\"Success - 200 OK\", function () {",
+													"    pm.response.to.have.status(200);",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{p14cStolenToken}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [
+											{
+												"key": "X-Forwarded-Host",
+												"value": "api.pingone.com",
+												"type": "text"
+											},
+											{
+												"key": "X-Forwarded-For",
+												"value": "{{clientIP}}",
+												"type": "text"
+											},
+											{
+												"key": "User-Agent",
+												"value": "{{userAgent}}",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{p14c_ApiPath}}/environments/{{envID}}/populations",
+											"host": [
+												"{{p14c_ApiPath}}"
+											],
+											"path": [
+												"environments",
+												"{{envID}}",
+												"populations"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Get All P14C Applications - STP",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "d7f88482-254b-4b51-85be-4671f20e9fb3",
+												"exec": [
+													"pm.test(\"Success - 200 OK\", function () {",
+													"    pm.response.to.have.status(200);",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{p14cStolenToken}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [
+											{
+												"key": "X-Forwarded-Host",
+												"value": "api.pingone.com",
+												"type": "text"
+											},
+											{
+												"key": "X-Forwarded-For",
+												"value": "{{clientIP}}",
+												"type": "text"
+											},
+											{
+												"key": "User-Agent",
+												"value": "{{userAgent}}",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{p14c_ApiPath}}/environments/{{envID}}/applications",
+											"host": [
+												"{{p14c_ApiPath}}"
+											],
+											"path": [
+												"environments",
+												"{{envID}}",
+												"applications"
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "44742034-c653-4b25-a1fe-52277de48b0c",
+										"type": "text/javascript",
+										"exec": [
+											"var requestcount = pm.variables.get(\"requestcount\");",
+											"//var firstIteration = pm.variables.get(\"requestcount\");",
+											"console.log(\"requestcount: \" + requestcount);",
+											"",
+											"//if (pm.info.iteration == \"0\" && requestcount != \"0\") {",
+											"//    requestcount = \"0\";",
+											"//    firstIteration = \"true\"",
+											"//    pm.variables.set(\"requestcount\", requestcount);",
+											"//    pm.variables.set(\"first_iteration\", \"true\")l",
+											"//    console.log(\"Iteration count is zero and requestcount is not zero!\");",
+											"//} ",
+											"",
+											"if ((pm.info.iteration != requestcount) ) {",
+											"    console.log(\"Iteration count is zero and requestcount is not zero!\");",
+											"    var random = _.random(0, 7);",
+											"    var userAgentArray = [ ",
+											"        \"Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.7.8) Gecko/20050513 Galeon/1.3.21\",",
+											"        \"Mozilla/5.0 (Windows; U; Windows NT 5.2; fr-FR; rv:1.7.8) Gecko/20050511 Firefox/1.0.4\",",
+											"        \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36\",",
+											"        \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.95 Safari/537.36\",",
+											"        \"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36\",",
+											"        \"Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36\",",
+											"        \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_3) AppleWebKit/602.4.8 (KHTML, like Gecko) Version/10.0.3 Safari/602.4.8\",",
+											"        \"Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:50.0) Gecko/20100101 Firefox/50.0\"",
+											"    ];",
+											"    ",
+											"    pm.environment.set(\"userAgent\", userAgentArray[random]);",
+											"    ",
+											"    // Generate random IP Address - Request Header - X-Forwarded-For",
+											"    var ipFirstPos = _.random(0, 255);",
+											"    var ipSecondPos = _.random(0, 255);",
+											"    var ipThirdPos = _.random(0, 255);",
+											"    var ipForthPos = _.random(0, 255);",
+											"    ",
+											"    var randomClientIP = ipFirstPos + \".\" + ipSecondPos + \".\" + ipThirdPos + \".\" + ipForthPos;",
+											"    pm.environment.set(\"clientIP\", randomClientIP);",
+											"    ",
+											"    // Get current count",
+											"    //var count = pm.environment.get(\"count\");",
+											"    ",
+											"    // increment count",
+											"    pm.variables.set(\"requestcount\", pm.info.iteration);",
+											"    ",
+											"}  ",
+											""
+										]
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"id": "1b863fde-a119-4f35-a498-e9699356e3c4",
+										"type": "text/javascript",
+										"exec": [
+											""
+										]
+									}
+								}
+							],
+							"protocolProfileBehavior": {},
+							"_postman_isSubFolder": true
+						},
+						{
+							"name": "Execute Stolen Token Attack",
+							"item": [
+								{
+									"name": "Get All P14C Users - ESTA",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "12080e62-2c53-416f-a486-41211daaf8b0",
+												"exec": [
+													"pm.test(\"Success - 200 OK\", function () {",
+													"    pm.response.to.have.status(200);",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{p14cStolenToken}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [
+											{
+												"key": "X-Forwarded-For",
+												"value": "{{clientIP}}",
+												"type": "text"
+											},
+											{
+												"key": "User-Agent",
+												"value": "{{userAgent}}",
+												"type": "text"
+											},
+											{
+												"key": "X-Forwarded-Host",
+												"value": "api.pingone.com",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{p14c_ApiPath}}/environments/{{envID}}/users",
+											"host": [
+												"{{p14c_ApiPath}}"
+											],
+											"path": [
+												"environments",
+												"{{envID}}",
+												"users"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Get All P14C Populations - ESTA",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "9ff1d493-2a43-47d1-ac3f-0a5503641eda",
+												"exec": [
+													"pm.test(\"Success - 200 OK\", function () {",
+													"    pm.response.to.have.status(200);",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{p14cStolenToken}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [
+											{
+												"key": "X-Forwarded-Host",
+												"value": "api.pingone.com",
+												"type": "text"
+											},
+											{
+												"key": "X-Forwarded-For",
+												"value": "{{clientIP}}",
+												"type": "text"
+											},
+											{
+												"key": "User-Agent",
+												"value": "{{userAgent}}",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{p14c_ApiPath}}/environments/{{envID}}/populations",
+											"host": [
+												"{{p14c_ApiPath}}"
+											],
+											"path": [
+												"environments",
+												"{{envID}}",
+												"populations"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Get All P14C Applications - ESTA",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "d7f88482-254b-4b51-85be-4671f20e9fb3",
+												"exec": [
+													"pm.test(\"Success - 200 OK\", function () {",
+													"    pm.response.to.have.status(200);",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{p14cStolenToken}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [
+											{
+												"key": "X-Forwarded-Host",
+												"value": "api.pingone.com",
+												"type": "text"
+											},
+											{
+												"key": "X-Forwarded-For",
+												"value": "{{clientIP}}",
+												"type": "text"
+											},
+											{
+												"key": "User-Agent",
+												"value": "{{userAgent}}",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{p14c_ApiPath}}/environments/{{envID}}/applications",
+											"host": [
+												"{{p14c_ApiPath}}"
+											],
+											"path": [
+												"environments",
+												"{{envID}}",
+												"applications"
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "0d8eb91f-d55b-41a5-ab76-89cc5b2b2718",
+										"type": "text/javascript",
+										"exec": [
+											"var requestcount = pm.variables.get(\"requestcount\");",
+											"//var firstIteration = pm.variables.get(\"requestcount\");",
+											"console.log(\"requestcount: \" + requestcount);",
+											"",
+											"//if (pm.info.iteration == \"0\" && requestcount != \"0\") {",
+											"//    requestcount = \"0\";",
+											"//    firstIteration = \"true\"",
+											"//    pm.variables.set(\"requestcount\", requestcount);",
+											"//    pm.variables.set(\"first_iteration\", \"true\")l",
+											"//    console.log(\"Iteration count is zero and requestcount is not zero!\");",
+											"//} ",
+											"",
+											"if ((pm.info.iteration != requestcount) ) {",
+											"    console.log(\"Iteration count is zero and requestcount is not zero!\");",
+											"    var random = _.random(0, 7);",
+											"    var userAgentArray = [ ",
+											"        \"Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.7.8) Gecko/20050513 Galeon/1.3.21\",",
+											"        \"Mozilla/5.0 (Windows; U; Windows NT 5.2; fr-FR; rv:1.7.8) Gecko/20050511 Firefox/1.0.4\",",
+											"        \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36\",",
+											"        \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.95 Safari/537.36\",",
+											"        \"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36\",",
+											"        \"Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36\",",
+											"        \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_3) AppleWebKit/602.4.8 (KHTML, like Gecko) Version/10.0.3 Safari/602.4.8\",",
+											"        \"Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:50.0) Gecko/20100101 Firefox/50.0\"",
+											"    ];",
+											"    ",
+											"    pm.environment.set(\"userAgent\", userAgentArray[random]);",
+											"    ",
+											"    // Generate random IP Address - Request Header - X-Forwarded-For",
+											"    var ipFirstPos = _.random(0, 255);",
+											"    var ipSecondPos = _.random(0, 255);",
+											"    var ipThirdPos = _.random(0, 255);",
+											"    var ipForthPos = _.random(0, 255);",
+											"    ",
+											"    var randomClientIP = ipFirstPos + \".\" + ipSecondPos + \".\" + ipThirdPos + \".\" + ipForthPos;",
+											"    pm.environment.set(\"clientIP\", randomClientIP);",
+											"    ",
+											"    // Get current count",
+											"    //var count = pm.environment.get(\"count\");",
+											"    ",
+											"    // increment count",
+											"    pm.variables.set(\"requestcount\", pm.info.iteration);",
+											"    ",
+											"}  ",
+											""
+										]
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"id": "54d8e578-caf6-4a8c-a253-2838745be118",
+										"type": "text/javascript",
+										"exec": [
+											""
+										]
+									}
+								}
+							],
+							"protocolProfileBehavior": {},
+							"_postman_isSubFolder": true
+						}
+					],
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "fe57d824-417b-4ee3-8196-b9d4aad52f27",
+								"type": "text/javascript",
+								"exec": [
+									"var requestcount = pm.variables.get(\"requestcount\");",
+									"//console.log(\"requestcount: \" + requestcount);",
+									"",
+									"if ((pm.info.iteration != requestcount) ) {",
+									"    console.log(\"Iteration count is zero and requestcount is not zero!\");",
+									"    var random = _.random(0, 7);",
+									"    var userAgentArray = [ ",
+									"        \"Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.7.8) Gecko/20050513 Galeon/1.3.21\",",
+									"        \"Mozilla/5.0 (Windows; U; Windows NT 5.2; fr-FR; rv:1.7.8) Gecko/20050511 Firefox/1.0.4\",",
+									"        \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36\",",
+									"        \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.95 Safari/537.36\",",
+									"        \"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36\",",
+									"        \"Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36\",",
+									"        \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_3) AppleWebKit/602.4.8 (KHTML, like Gecko) Version/10.0.3 Safari/602.4.8\",",
+									"        \"Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:50.0) Gecko/20100101 Firefox/50.0\"",
+									"    ];",
+									"    ",
+									"    pm.environment.set(\"userAgent\", userAgentArray[random]);",
+									"    ",
+									"    // Generate random IP Address - Request Header - X-Forwarded-For",
+									"    var ipFirstPos = _.random(0, 255);",
+									"    var ipSecondPos = _.random(0, 255);",
+									"    var ipThirdPos = _.random(0, 255);",
+									"    var ipForthPos = _.random(0, 255);",
+									"    ",
+									"    var randomClientIP = ipFirstPos + \".\" + ipSecondPos + \".\" + ipThirdPos + \".\" + ipForthPos;",
+									"    pm.environment.set(\"clientIP\", randomClientIP);",
+									"    ",
+									"    // increment count",
+									"    pm.variables.set(\"requestcount\", pm.info.iteration);",
+									"    ",
+									"}  ",
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "f9c59223-f324-45fe-badb-fd33e377e089",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Decoy - Realtime Detection",
+					"item": [
+						{
+							"name": "Get Access Token Copy",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "b0acd9c8-8944-426d-886a-dd059a59522a",
+										"exec": [
+											"var jsonData = JSON.parse(responseBody);",
+											"postman.setEnvironmentVariable(\"p14cAccessToken\", jsonData.access_token);",
+											"",
+											"pm.test(\"Success - 200 OK\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "grant_type",
+											"value": "client_credentials",
+											"type": "text"
+										},
+										{
+											"key": "client_id",
+											"value": "{{adminAppID}}",
+											"type": "text"
+										},
+										{
+											"key": "client_secret",
+											"value": "{{adminAppSecret}}",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://auth.pingone.com/{{envID}}/as/token",
+									"protocol": "https",
+									"host": [
+										"auth",
+										"pingone",
+										"com"
+									],
+									"path": [
+										"{{envID}}",
+										"as",
+										"token"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get All P14C Users Copy",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "12080e62-2c53-416f-a486-41211daaf8b0",
+										"exec": [
+											"pm.test(\"Success - 200 OK\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{p14cAccessToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "X-Forwarded-For",
+										"value": "{{clientIP}}",
+										"type": "text"
+									},
+									{
+										"key": "User-Agent",
+										"value": "{{userAgent}}",
+										"type": "text"
+									},
+									{
+										"key": "X-Forwarded-Host",
+										"value": "api.pingone.com",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{p14c_ApiPath}}/environments/{{envID}}/users",
+									"host": [
+										"{{p14c_ApiPath}}"
+									],
+									"path": [
+										"environments",
+										"{{envID}}",
+										"users"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Hit the Decoy URL",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "9ff1d493-2a43-47d1-ac3f-0a5503641eda",
+										"exec": [
+											"pm.test(\"Success - 200 OK\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "X-Forwarded-For",
+										"value": "{{clientIP}}",
+										"type": "text"
+									},
+									{
+										"key": "User-Agent",
+										"value": "{{userAgent}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "https://{{ase_host}}:{{ase_https_port}}/account",
+									"protocol": "https",
+									"host": [
+										"{{ase_host}}"
+									],
+									"port": "{{ase_https_port}}",
+									"path": [
+										"account"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get All P14C Applications",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "d7f88482-254b-4b51-85be-4671f20e9fb3",
+										"exec": [
+											"pm.test(\"Success - 200 OK\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{p14cAccessToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "X-Forwarded-Host",
+										"value": "api.pingone.com",
+										"type": "text"
+									},
+									{
+										"key": "X-Forwarded-For",
+										"value": "{{clientIP}}",
+										"type": "text"
+									},
+									{
+										"key": "User-Agent",
+										"value": "{{userAgent}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{p14c_ApiPath}}/environments/{{envID}}/applications",
+									"host": [
+										"{{p14c_ApiPath}}"
+									],
+									"path": [
+										"environments",
+										"{{envID}}",
+										"applications"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "f5b0b1b9-f1eb-4927-aad5-323b99cdb960",
+								"type": "text/javascript",
+								"exec": [
+									"var requestcount = pm.variables.get(\"requestcount\");",
+									"//console.log(\"requestcount: \" + requestcount);",
+									"",
+									"if ((pm.info.iteration != requestcount) ) {",
+									"    console.log(\"Iteration count is zero and requestcount is not zero!\");",
+									"    var random = _.random(0, 7);",
+									"    var userAgentArray = [ ",
+									"        \"Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.7.8) Gecko/20050513 Galeon/1.3.21\",",
+									"        \"Mozilla/5.0 (Windows; U; Windows NT 5.2; fr-FR; rv:1.7.8) Gecko/20050511 Firefox/1.0.4\",",
+									"        \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36\",",
+									"        \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.95 Safari/537.36\",",
+									"        \"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36\",",
+									"        \"Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36\",",
+									"        \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_3) AppleWebKit/602.4.8 (KHTML, like Gecko) Version/10.0.3 Safari/602.4.8\",",
+									"        \"Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:50.0) Gecko/20100101 Firefox/50.0\"",
+									"    ];",
+									"    ",
+									"    pm.environment.set(\"userAgent\", userAgentArray[random]);",
+									"    ",
+									"    // Generate random IP Address - Request Header - X-Forwarded-For",
+									"    var ipFirstPos = _.random(0, 255);",
+									"    var ipSecondPos = _.random(0, 255);",
+									"    var ipThirdPos = _.random(0, 255);",
+									"    var ipForthPos = _.random(0, 255);",
+									"    ",
+									"    var randomClientIP = ipFirstPos + \".\" + ipSecondPos + \".\" + ipThirdPos + \".\" + ipForthPos;",
+									"    pm.environment.set(\"clientIP\", randomClientIP);",
+									"    ",
+									"    // increment count",
+									"    pm.variables.set(\"requestcount\", pm.info.iteration);",
+									"    ",
+									"}  ",
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "435f8a1e-b995-46d1-90b4-9c29d58a0128",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Stolen Cookie Attack",
+					"item": [
+						{
+							"name": "READ Flow",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "d32ba6ba-d9b3-4d5c-b23e-9d7a8a601b01",
+										"exec": [
+											"pm.test(\"Status - 200 OK\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "X-Forwarded-For",
+										"value": "{{clientIP}}",
+										"type": "text"
+									},
+									{
+										"key": "User-Agent",
+										"value": "{{userAgent}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{p14c_AuthPath}}/{{envID}}/flows/{{flowID}}",
+									"host": [
+										"{{p14c_AuthPath}}"
+									],
+									"path": [
+										"{{envID}}",
+										"flows",
+										"{{flowID}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Check Username/Password",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "a47367cf-f47d-4907-83f1-58162ff5fc0e",
+										"exec": [
+											"pm.test(\"Status - 200 OK\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/vnd.pingidentity.usernamePassword.check+json"
+									},
+									{
+										"key": "Cookie",
+										"value": "ST={{sessionToken}}",
+										"description": "Use this for localhost",
+										"disabled": true
+									},
+									{
+										"key": "X-Forwarded-For",
+										"value": "{{attackClientIP}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"username\": \"cleggett+salesu2020@pingidentity.com\",\n    \"password\": \"2Federate@2\"\n}"
+								},
+								"url": {
+									"raw": "{{p14c_AuthPath}}/{{envID}}/flows/{{flowID}}",
+									"host": [
+										"{{p14c_AuthPath}}"
+									],
+									"path": [
+										"{{envID}}",
+										"flows",
+										"{{flowID}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Resume",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "60b37dbe-5e4d-4cb3-bf35-5ce3a600bbd6",
+										"exec": [
+											"var sdk = require('postman-collection');",
+											"pm.test(\"Status - 302 Found\", function () {",
+											"    pm.response.to.have.status(302);",
+											"    var headerValue = pm.response.headers.get(\"Location\");",
+											"    var locationUrl = sdk.Url.parse(headerValue);",
+											"    if(locationUrl.query[0].key == \"code\") {",
+											"        ",
+											"        pm.environment.set(\"authCode\", locationUrl.query[0].value);",
+											"    }     ",
+											"}); "
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"followRedirects": false
+							},
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Cookie",
+										"value": "ST={{sessionToken}}",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "X-Forwarded-For",
+										"value": "{{clientIP}}",
+										"type": "text"
+									},
+									{
+										"key": "User-Agent",
+										"value": "{{userAgent}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{p14c_AuthPath}}/{{envID}}/as/resume?flowId={{flowID}}",
+									"host": [
+										"{{p14c_AuthPath}}"
+									],
+									"path": [
+										"{{envID}}",
+										"as",
+										"resume"
+									],
+									"query": [
+										{
+											"key": "flowId",
+											"value": "{{flowID}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Token (authorization_code)",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "d7e03e64-fc15-4671-b8f1-a0f02aca147a",
+										"exec": [
+											"pm.test(\"Status - 200 OK\", function () {",
+											"    pm.response.to.have.status(200);",
+											"    var jsonData = JSON.parse(responseBody);",
+											"    postman.setEnvironmentVariable(\"p14c_auth_accessToken\", jsonData.access_token);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "9e098983-7a0f-4f94-9162-15259e7a67fd",
+										"exec": [
+											"const jar = pm.cookies.jar();",
+											"jar.unset(\"https://\" + pm.environment.get('ase_host') + \"/\" + pm.environment.get('envID'), 'ST', function (error) {",
+											"    console.log(error);   ",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/x-www-form-urlencoded"
+									},
+									{
+										"key": "X-Forwarded-For",
+										"value": "{{clientIP}}",
+										"type": "text"
+									},
+									{
+										"key": "User-Agent",
+										"value": "{{userAgent}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "grant_type",
+											"value": "authorization_code",
+											"description": "Required",
+											"type": "text"
+										},
+										{
+											"key": "code",
+											"value": "{{authCode}}",
+											"description": "Required",
+											"type": "text"
+										},
+										{
+											"key": "redirect_uri",
+											"value": "https://www.getpostman.com/oauth2/callback",
+											"description": "Required",
+											"type": "text"
+										},
+										{
+											"key": "client_id",
+											"value": "{{adminAppID}}",
+											"description": "(For CLIENT_SECRET_POST; if included with Basic Auth, must match Header value)",
+											"type": "text"
+										},
+										{
+											"key": "client_secret",
+											"value": "{{adminAppSecret}}",
+											"description": "(For for CLIENT_SECRET_POST)",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{p14c_AuthPath}}/{{envID}}/as/token",
+									"host": [
+										"{{p14c_AuthPath}}"
+									],
+									"path": [
+										"{{envID}}",
+										"as",
+										"token"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "6f5b34de-e195-4cbd-8aff-d5dc6d07f0fb",
+								"type": "text/javascript",
+								"exec": [
+									"var requestcount = pm.variables.get(\"requestcount\");",
+									"//console.log(\"requestcount: \" + requestcount);",
+									"",
+									"if ((pm.info.iteration != requestcount) ) {",
+									"    console.log(\"Iteration count is zero and requestcount is not zero!\");",
+									"    var random = _.random(0, 7);",
+									"    var userAgentArray = [ ",
+									"        \"Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.7.8) Gecko/20050513 Galeon/1.3.21\",",
+									"        \"Mozilla/5.0 (Windows; U; Windows NT 5.2; fr-FR; rv:1.7.8) Gecko/20050511 Firefox/1.0.4\",",
+									"        \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36\",",
+									"        \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.95 Safari/537.36\",",
+									"        \"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36\",",
+									"        \"Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36\",",
+									"        \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_3) AppleWebKit/602.4.8 (KHTML, like Gecko) Version/10.0.3 Safari/602.4.8\",",
+									"        \"Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:50.0) Gecko/20100101 Firefox/50.0\"",
+									"    ];",
+									"    ",
+									"    pm.environment.set(\"userAgent\", userAgentArray[random]);",
+									"    ",
+									"    // Generate random IP Address - Request Header - X-Forwarded-For",
+									"    var ipFirstPos = [_.random(0, 255), _.random(0, 255)];",
+									"    var ipSecondPos = [_.random(0, 255), _.random(0, 255)];",
+									"    var ipThirdPos = [_.random(0, 255), _.random(0, 255)];",
+									"    var ipForthPos = [_.random(0, 255), _.random(0, 255)];",
+									"    ",
+									"     ",
+									"    ",
+									"    var randomClientIP = ipFirstPos[0] + \".\" + ipSecondPos[0] + \".\" + ipThirdPos[0] + \".\" + ipForthPos[0];",
+									"    var attackClientIP = ipFirstPos[1] + \".\" + ipSecondPos[1] + \".\" + ipThirdPos[1] + \".\" + ipForthPos[1]; ",
+									"    ",
+									"    pm.environment.set(\"clientIP\", randomClientIP);",
+									"    pm.environment.set(\"attackClientIP\", attackClientIP);",
+									"    ",
+									"    // increment count",
+									"    pm.variables.set(\"requestcount\", pm.info.iteration);",
+									"    ",
+									"}  ",
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "2bf46c86-5b4d-480a-9f2e-45d32ff1217e",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"auth": {
+		"type": "oauth2",
+		"oauth2": [
+			{
+				"key": "accessToken",
+				"value": "",
+				"type": "string"
+			},
+			{
+				"key": "tokenType",
+				"value": "Bearer",
+				"type": "string"
+			},
+			{
+				"key": "addTokenTo",
+				"value": "header",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "fced8902-1638-4e8a-b2e3-56469c7bb613",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "ce364955-024d-4fed-8da6-062227d8c154",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"protocolProfileBehavior": {}
+}
