@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "43498ed0-8f43-4554-b6d6-2caa669bd380",
+		"_postman_id": "312226dc-3ce6-4cd1-bd12-0b6229efa7a8",
 		"name": "PI-SalesU2020 ",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -236,7 +236,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"api_metadata\": {\n        \"protocol\": \"http\",\n        \"url\": \"/account\",\n        \"hostname\": \"cleggett-ase.pi-su2020.com\",\n        \"cookie\": \"\",\n        \"cookie_idle_timeout\": \"200m\",\n        \"logout_api_enabled\": false,\n        \"cookie_persistence_enabled\": false,\n        \"oauth2_access_token\": false,\n        \"apikey_qs\": \"\",\n        \"apikey_header\": \"\",\n        \"login_url\": \"\",\n        \"enable_blocking\": true,\n        \"api_mapping\": {\n            \"internal_url\": \"\"\n        },\n        \"api_pattern_enforcement\": {\n            \"protocol_allowed\": \"\",\n            \"http_redirect\": {\n                \"response_code\": \"\",\n                \"response_def\": \"\",\n                \"https_url\": \"\"\n            },\n            \"methods_allowed\": [],\n            \"content_type_allowed\": \"\",\n            \"error_code\": \"401\",\n            \"error_def\": \"Unauthorized\",\n            \"error_message_body\": \"401 Unauthorized\"\n        },\n        \"flow_control\": {\n            \"client_spike_threshold\": \"0/second\",\n            \"server_connection_queueing\" : false\n        },\n        \"api_memory_size\": \"32mb\",\n        \"health_check\": false,\n        \"health_check_interval\": 60,\n        \"health_retry_count\": 4,\n        \"health_url\": \"\",\n        \"health_check_headers\": {},\n        \"server_ssl\": false,\n        \"servers\": [\n        ],\n        \"decoy_config\":\n        {\n          \"decoy_enabled\": true,\n          \"response_code\" : 200,\n          \"response_def\" : \"OK\",\n          \"response_message\" : \"OK - Whoopsies\",\n          \"decoy_subpaths\": [\n          ]\n       }\n    }\n}",
+							"raw": "{\n    \"api_metadata\": {\n        \"protocol\": \"http\",\n        \"url\": \"/account\",\n        \"hostname\": \"{{ase_host}}\",\n        \"cookie\": \"\",\n        \"cookie_idle_timeout\": \"200m\",\n        \"logout_api_enabled\": false,\n        \"cookie_persistence_enabled\": false,\n        \"oauth2_access_token\": false,\n        \"apikey_qs\": \"\",\n        \"apikey_header\": \"\",\n        \"login_url\": \"\",\n        \"enable_blocking\": true,\n        \"api_mapping\": {\n            \"internal_url\": \"\"\n        },\n        \"api_pattern_enforcement\": {\n            \"protocol_allowed\": \"\",\n            \"http_redirect\": {\n                \"response_code\": \"\",\n                \"response_def\": \"\",\n                \"https_url\": \"\"\n            },\n            \"methods_allowed\": [],\n            \"content_type_allowed\": \"\",\n            \"error_code\": \"401\",\n            \"error_def\": \"Unauthorized\",\n            \"error_message_body\": \"401 Unauthorized\"\n        },\n        \"flow_control\": {\n            \"client_spike_threshold\": \"0/second\",\n            \"server_connection_queueing\" : false\n        },\n        \"api_memory_size\": \"32mb\",\n        \"health_check\": false,\n        \"health_check_interval\": 60,\n        \"health_retry_count\": 4,\n        \"health_url\": \"\",\n        \"health_check_headers\": {},\n        \"server_ssl\": false,\n        \"servers\": [\n        ],\n        \"decoy_config\":\n        {\n          \"decoy_enabled\": true,\n          \"response_code\" : 200,\n          \"response_def\" : \"OK\",\n          \"response_message\" : \"OK - Whoopsies\",\n          \"decoy_subpaths\": [\n          ]\n       }\n    }\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1508,7 +1508,19 @@
 							],
 							"request": {
 								"auth": {
-									"type": "noauth"
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "{{adminAppSecret}}",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "{{adminAppID}}",
+											"type": "string"
+										}
+									]
 								},
 								"method": "POST",
 								"header": [
@@ -1552,13 +1564,15 @@
 											"key": "client_id",
 											"value": "{{adminAppID}}",
 											"description": "(For CLIENT_SECRET_POST; if included with Basic Auth, must match Header value)",
-											"type": "text"
+											"type": "text",
+											"disabled": true
 										},
 										{
 											"key": "client_secret",
 											"value": "{{adminAppSecret}}",
 											"description": "(For for CLIENT_SECRET_POST)",
-											"type": "text"
+											"type": "text",
+											"disabled": true
 										}
 									]
 								},
@@ -2132,7 +2146,19 @@
 									],
 									"request": {
 										"auth": {
-											"type": "noauth"
+											"type": "basic",
+											"basic": [
+												{
+													"key": "password",
+													"value": "{{adminAppSecret}}",
+													"type": "string"
+												},
+												{
+													"key": "username",
+													"value": "{{adminAppID}}",
+													"type": "string"
+												}
+											]
 										},
 										"method": "POST",
 										"header": [
@@ -2154,12 +2180,14 @@
 												{
 													"key": "client_id",
 													"value": "{{adminAppID}}",
-													"type": "text"
+													"type": "text",
+													"disabled": true
 												},
 												{
 													"key": "client_secret",
 													"value": "{{adminAppSecret}}",
-													"type": "text"
+													"type": "text",
+													"disabled": true
 												}
 											]
 										},
@@ -2759,7 +2787,19 @@
 							],
 							"request": {
 								"auth": {
-									"type": "noauth"
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "{{adminAppSecret}}",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "{{adminAppID}}",
+											"type": "string"
+										}
+									]
 								},
 								"method": "POST",
 								"header": [
@@ -2781,12 +2821,14 @@
 										{
 											"key": "client_id",
 											"value": "{{adminAppID}}",
-											"type": "text"
+											"type": "text",
+											"disabled": true
 										},
 										{
 											"key": "client_secret",
 											"value": "{{adminAppSecret}}",
-											"type": "text"
+											"type": "text",
+											"disabled": true
 										}
 									]
 								},
@@ -3070,7 +3112,7 @@
 											}
 										],
 										"url": {
-											"raw": "{{p14c_AuthPath}}/{{envID}}/flows/{{flowID}}?Cookie=ST=<stolen cookie>",
+											"raw": "{{p14c_AuthPath}}/{{envID}}/flows/{{flowID}}",
 											"host": [
 												"{{p14c_AuthPath}}"
 											],
@@ -3078,12 +3120,6 @@
 												"{{envID}}",
 												"flows",
 												"{{flowID}}"
-											],
-											"query": [
-												{
-													"key": "Cookie",
-													"value": "ST=<stolen cookie>"
-												}
 											]
 										}
 									},
@@ -3433,7 +3469,19 @@
 							],
 							"request": {
 								"auth": {
-									"type": "noauth"
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "{{adminAppSecret}}",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "{{adminAppID}}",
+											"type": "string"
+										}
+									]
 								},
 								"method": "POST",
 								"header": [
@@ -3477,13 +3525,15 @@
 											"key": "client_id",
 											"value": "{{adminAppID}}",
 											"description": "(For CLIENT_SECRET_POST; if included with Basic Auth, must match Header value)",
-											"type": "text"
+											"type": "text",
+											"disabled": true
 										},
 										{
 											"key": "client_secret",
 											"value": "{{adminAppSecret}}",
 											"description": "(For for CLIENT_SECRET_POST)",
-											"type": "text"
+											"type": "text",
+											"disabled": true
 										}
 									]
 								},
@@ -3591,7 +3641,19 @@
 									],
 									"request": {
 										"auth": {
-											"type": "noauth"
+											"type": "basic",
+											"basic": [
+												{
+													"key": "password",
+													"value": "{{adminAppSecret}}",
+													"type": "string"
+												},
+												{
+													"key": "username",
+													"value": "{{adminAppID}}",
+													"type": "string"
+												}
+											]
 										},
 										"method": "POST",
 										"header": [
@@ -3613,12 +3675,14 @@
 												{
 													"key": "client_id",
 													"value": "{{adminAppID}}",
-													"type": "text"
+													"type": "text",
+													"disabled": true
 												},
 												{
 													"key": "client_secret",
 													"value": "{{adminAppSecret}}",
-													"type": "text"
+													"type": "text",
+													"disabled": true
 												}
 											]
 										},
