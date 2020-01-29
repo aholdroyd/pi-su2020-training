@@ -418,6 +418,11 @@
 								"key": "X-Forwarded-For",
 								"type": "text",
 								"value": "{{$randomIP}}"
+							},
+							{
+								"key": "Connection",
+								"value": "close",
+								"type": "text"
 							}
 						],
 						"url": {
@@ -467,6 +472,11 @@
 								"key": "X-Forwarded-For",
 								"type": "text",
 								"value": "{{$randomIP}}"
+							},
+							{
+								"key": "Connection",
+								"value": "close",
+								"type": "text"
 							}
 						],
 						"url": {
@@ -517,6 +527,11 @@
 								"key": "X-Forwarded-For",
 								"type": "text",
 								"value": "{{$randomIP}}"
+							},
+							{
+								"key": "Connection",
+								"value": "close",
+								"type": "text"
 							}
 						],
 						"url": {
@@ -3019,6 +3034,201 @@
 					"name": "Stolen Cookie Attack",
 					"item": [
 						{
+							"name": "Use Stolen Cookie",
+							"item": [
+								{
+									"name": "READ Flow",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "d32ba6ba-d9b3-4d5c-b23e-9d7a8a601b01",
+												"exec": [
+													"pm.test(\"Status - 200 OK\", function () {",
+													"    pm.response.to.have.status(200);",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"auth": {
+											"type": "noauth"
+										},
+										"method": "GET",
+										"header": [
+											{
+												"key": "X-Forwarded-For",
+												"value": "{{clientIP}}",
+												"type": "text"
+											},
+											{
+												"key": "User-Agent",
+												"value": "{{userAgent}}",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{p14c_AuthPath}}/{{envID}}/flows/{{flowID}}?Cookie=ST=<stolen cookie>",
+											"host": [
+												"{{p14c_AuthPath}}"
+											],
+											"path": [
+												"{{envID}}",
+												"flows",
+												"{{flowID}}"
+											],
+											"query": [
+												{
+													"key": "Cookie",
+													"value": "ST=<stolen cookie>"
+												}
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"protocolProfileBehavior": {},
+							"_postman_isSubFolder": true
+						},
+						{
+							"name": "Authorize (authorization_code) Copy",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "56e70a10-42c0-4c0c-b779-35c23d20426e",
+										"exec": [
+											"var sdk = require('postman-collection');",
+											"pm.test(\"Status - 302 Found\", function () {",
+											"    pm.response.to.have.status(302);",
+											"",
+											"    var headerValue = pm.response.headers.get(\"Location\");",
+											"    var locationUrl = sdk.Url.parse(headerValue);",
+											"    ",
+											"    if(locationUrl.query[0].key == \"flowId\") {",
+											"        //pm.environment.set('sessionToken', pm.cookies.get('ST'));",
+											"        pm.environment.set(\"flowID\", locationUrl.query[0].value);",
+											"    } ",
+											"",
+											"}); "
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"followRedirects": false
+							},
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/x-www-form-urlencoded"
+									},
+									{
+										"key": "X-Forwarded-For",
+										"value": "{{clientIP}}",
+										"type": "text"
+									},
+									{
+										"key": "User-Agent",
+										"value": "{{userAgent}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "response_type",
+											"value": "code",
+											"description": "Required",
+											"type": "text"
+										},
+										{
+											"key": "client_id",
+											"value": "{{adminAppID}}",
+											"description": "Required",
+											"type": "text"
+										},
+										{
+											"key": "redirect_uri",
+											"value": "https://www.getpostman.com/oauth2/callback",
+											"description": "Required",
+											"type": "text"
+										},
+										{
+											"key": "scope",
+											"value": "openid profile email p1:read:user",
+											"description": "Required - must have Grant for requested scopes",
+											"type": "text"
+										},
+										{
+											"key": "state",
+											"value": "<state value>",
+											"description": "Recommended",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "response_mode",
+											"value": "fragment",
+											"description": "Optional ( query | fragment )",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "nonce",
+											"value": "<nonce value>",
+											"description": "Optional",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "prompt",
+											"value": "login",
+											"description": "Optional ( none | login )",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "max_age",
+											"value": "3600",
+											"description": "Optional - uses seconds",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "acr_values",
+											"value": "Single_Factor",
+											"description": "Optional - use Sign-on Policy names (space-delimited)",
+											"type": "text",
+											"disabled": true
+										}
+									]
+								},
+								"url": {
+									"raw": "{{p14c_AuthPath}}/{{envID}}/as/authorize",
+									"host": [
+										"{{p14c_AuthPath}}"
+									],
+									"path": [
+										"{{envID}}",
+										"as",
+										"authorize"
+									]
+								}
+							},
+							"response": []
+						},
+						{
 							"name": "READ Flow",
 							"event": [
 								{
@@ -3353,140 +3563,302 @@
 					],
 					"protocolProfileBehavior": {},
 					"_postman_isSubFolder": true
-				}
-			],
-			"protocolProfileBehavior": {}
-		},
-		{
-			"name": "Misc",
-			"item": [
-				{
-					"name": "Create Test User",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "01ea4fe1-91a2-4d81-b533-d2656c19590e",
-								"exec": [
-									"pm.test(\"Received 201 response\", function () {",
-									"    pm.response.to.have.status(201);",
-									"    console.log('201 received');",
-									"    let response = pm.response.json();",
-									"    pm.environment.set(\"userID\", response.id);",
-									"    console.log(response.id);",
-									"});"
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{p14cAccessToken}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"name": "Content-Type",
-								"value": "application/json",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"email\": \"jdoe@example.com\",\n    \"name\": {\n        \"given\": \"John\",\n        \"family\": \"Doe\"\n    },\n    \"population\": {\n        \"id\": \"{{popID}}\"\n    },\n    \"username\": \"jdoe@example.com\"\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{p14c_ApiPath}}/environments/{{envID}}/users",
-							"host": [
-								"{{p14c_ApiPath}}"
-							],
-							"path": [
-								"environments",
-								"{{envID}}",
-								"users"
-							]
-						}
-					},
-					"response": []
 				},
 				{
-					"name": "Set Password",
+					"name": "Data Exflitration Attack",
+					"item": [
+						{
+							"name": "Data Exfiltration Prep",
+							"item": [
+								{
+									"name": "Get Access Token",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "b0acd9c8-8944-426d-886a-dd059a59522a",
+												"exec": [
+													"var jsonData = JSON.parse(responseBody);",
+													"postman.setEnvironmentVariable(\"p14cStolenToken\", jsonData.access_token);",
+													"",
+													"pm.test(\"Success - 200 OK\", function () {",
+													"    pm.response.to.have.status(200);",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"auth": {
+											"type": "noauth"
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"name": "Content-Type",
+												"type": "text",
+												"value": "application/x-www-form-urlencoded"
+											}
+										],
+										"body": {
+											"mode": "urlencoded",
+											"urlencoded": [
+												{
+													"key": "grant_type",
+													"value": "client_credentials",
+													"type": "text"
+												},
+												{
+													"key": "client_id",
+													"value": "{{adminAppID}}",
+													"type": "text"
+												},
+												{
+													"key": "client_secret",
+													"value": "{{adminAppSecret}}",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "https://auth.pingone.com/{{envID}}/as/token",
+											"protocol": "https",
+											"host": [
+												"auth",
+												"pingone",
+												"com"
+											],
+											"path": [
+												"{{envID}}",
+												"as",
+												"token"
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"protocolProfileBehavior": {},
+							"_postman_isSubFolder": true
+						},
+						{
+							"name": "Execute Data Exfiltration Attack",
+							"item": [
+								{
+									"name": "READ One User",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "17b674c8-46e2-47c3-b96c-bca07527361f",
+												"exec": [
+													"pm.test(\"Status - 200 OK\", function () {",
+													"    pm.response.to.have.status(200);",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{p14cStolenToken}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [
+											{
+												"key": "User-Agent",
+												"type": "text",
+												"value": "{{userAgent}}"
+											},
+											{
+												"key": "X-Forwarded-For",
+												"type": "text",
+												"value": "1.1.1.1"
+											}
+										],
+										"url": {
+											"raw": "{{p14c_ApiPath}}/environments/{{envID}}/users?filter={{$randomWord}} eq \"{{$randomUserName}}\"",
+											"host": [
+												"{{p14c_ApiPath}}"
+											],
+											"path": [
+												"environments",
+												"{{envID}}",
+												"users"
+											],
+											"query": [
+												{
+													"key": "filter",
+													"value": "{{$randomWord}} eq \"{{$randomUserName}}\""
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "READ One User 2",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "17b674c8-46e2-47c3-b96c-bca07527361f",
+												"exec": [
+													"pm.test(\"Status - 200 OK\", function () {",
+													"    pm.response.to.have.status(200);",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{p14cStolenToken}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [
+											{
+												"key": "User-Agent",
+												"type": "text",
+												"value": "{{userAgent}}"
+											},
+											{
+												"key": "X-Forwarded-For",
+												"type": "text",
+												"value": "1.1.1.1"
+											}
+										],
+										"url": {
+											"raw": "{{p14c_ApiPath}}/environments/{{envID}}/users?filter={{$randomWord}} eq \"{{$randomUserName}}\"",
+											"host": [
+												"{{p14c_ApiPath}}"
+											],
+											"path": [
+												"environments",
+												"{{envID}}",
+												"users"
+											],
+											"query": [
+												{
+													"key": "filter",
+													"value": "{{$randomWord}} eq \"{{$randomUserName}}\""
+												}
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "eb015e64-2164-4cd9-bc8c-2560f27af848",
+										"type": "text/javascript",
+										"exec": [
+											"var requestcount = pm.variables.get(\"requestcount\");",
+											"//var firstIteration = pm.variables.get(\"requestcount\");",
+											"console.log(\"requestcount: \" + requestcount);",
+											"",
+											"//if (pm.info.iteration == \"0\" && requestcount != \"0\") {",
+											"//    requestcount = \"0\";",
+											"//    firstIteration = \"true\"",
+											"//    pm.variables.set(\"requestcount\", requestcount);",
+											"//    pm.variables.set(\"first_iteration\", \"true\")l",
+											"//    console.log(\"Iteration count is zero and requestcount is not zero!\");",
+											"//} ",
+											"",
+											"if ((pm.info.iteration != requestcount) ) {",
+											"    console.log(\"Iteration count is zero and requestcount is not zero!\");",
+											"    var random = _.random(0, 7);",
+											"    var userAgentArray = [ ",
+											"        \"Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.7.8) Gecko/20050513 Galeon/1.3.21\",",
+											"        \"Mozilla/5.0 (Windows; U; Windows NT 5.2; fr-FR; rv:1.7.8) Gecko/20050511 Firefox/1.0.4\",",
+											"        \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36\",",
+											"        \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.95 Safari/537.36\",",
+											"        \"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36\",",
+											"        \"Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36\",",
+											"        \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_3) AppleWebKit/602.4.8 (KHTML, like Gecko) Version/10.0.3 Safari/602.4.8\",",
+											"        \"Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:50.0) Gecko/20100101 Firefox/50.0\"",
+											"    ];",
+											"    ",
+											"    pm.environment.set(\"userAgent\", userAgentArray[random]);",
+											"    ",
+											"    // Generate random IP Address - Request Header - X-Forwarded-For",
+											"    var ipFirstPos = _.random(0, 255);",
+											"    var ipSecondPos = _.random(0, 255);",
+											"    var ipThirdPos = _.random(0, 255);",
+											"    var ipForthPos = _.random(0, 255);",
+											"    ",
+											"    var randomClientIP = ipFirstPos + \".\" + ipSecondPos + \".\" + ipThirdPos + \".\" + ipForthPos;",
+											"    pm.environment.set(\"clientIP\", randomClientIP);",
+											"    ",
+											"    // Get current count",
+											"    //var count = pm.environment.get(\"count\");",
+											"    ",
+											"    // increment count",
+											"    pm.variables.set(\"requestcount\", pm.info.iteration);",
+											"}"
+										]
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"id": "62c96963-1928-4743-b05c-0247b710b2de",
+										"type": "text/javascript",
+										"exec": [
+											""
+										]
+									}
+								}
+							],
+							"protocolProfileBehavior": {},
+							"_postman_isSubFolder": true
+						}
+					],
 					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "be7768a6-d650-41aa-a618-aeec54c42d0f",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
 						{
 							"listen": "test",
 							"script": {
-								"id": "34348e52-85e3-4e6a-b955-fab82e0f9a02",
+								"id": "e33ed28d-4893-4396-b96c-1e20997d0078",
+								"type": "text/javascript",
 								"exec": [
 									""
-								],
-								"type": "text/javascript"
+								]
 							}
 						}
 					],
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{p14cAccessToken}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "PUT",
-						"header": [
-							{
-								"key": "Content-Type",
-								"name": "Content-Type",
-								"value": "application/vnd.pingidentity.password.set+json",
-								"type": "text"
-							},
-							{
-								"key": "Accept",
-								"value": "application/json",
-								"type": "text",
-								"disabled": true
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n  \"value\": \"2FederateM0re!\",\n  \"forceChange\": false\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{p14c_ApiPath}}/environments/{{envID}}/users/{{userID}}/password",
-							"host": [
-								"{{p14c_ApiPath}}"
-							],
-							"path": [
-								"environments",
-								"{{envID}}",
-								"users",
-								"{{userID}}",
-								"password"
-							]
-						}
-					},
-					"response": []
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
 				}
 			],
 			"protocolProfileBehavior": {}
