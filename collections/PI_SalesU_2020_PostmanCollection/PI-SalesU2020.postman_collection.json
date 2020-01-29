@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "d0854adb-c077-4dc2-bd6e-025eb5c9d1a2",
+		"_postman_id": "43498ed0-8f43-4554-b6d6-2caa669bd380",
 		"name": "PI-SalesU2020 ",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -303,7 +303,9 @@
 							"raw": "https://abs1.pi-su2020.com:8080/v4/abs/discovery",
 							"protocol": "https",
 							"host": [
-								"abs1.pi-su2020.com"
+								"abs1",
+								"pi-su2020",
+								"com"
 							],
 							"port": "8080",
 							"path": [
@@ -335,7 +337,9 @@
 							"raw": "https://abs1.pi-su2020.com:8080/v4/abs/discovery?api=<api_id>",
 							"protocol": "https",
 							"host": [
-								"abs1.pi-su2020.com"
+								"abs1",
+								"pi-su2020",
+								"com"
 							],
 							"port": "8080",
 							"path": [
@@ -826,11 +830,10 @@
 									"script": {
 										"id": "b0acd9c8-8944-426d-886a-dd059a59522a",
 										"exec": [
-											"var jsonData = JSON.parse(responseBody);",
-											"postman.setEnvironmentVariable(\"p14cAccessToken\", jsonData.access_token);",
-											"",
 											"pm.test(\"Success - 200 OK\", function () {",
 											"    pm.response.to.have.status(200);",
+											"    var jsonData = JSON.parse(responseBody);",
+											"postman.setEnvironmentVariable(\"p14cAccessToken\", jsonData.access_token);",
 											"});"
 										],
 										"type": "text/javascript"
@@ -839,7 +842,19 @@
 							],
 							"request": {
 								"auth": {
-									"type": "noauth"
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "{{adminAppSecret}}",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "{{adminAppID}}",
+											"type": "string"
+										}
+									]
 								},
 								"method": "POST",
 								"header": [
@@ -861,12 +876,14 @@
 										{
 											"key": "client_id",
 											"value": "{{adminAppID}}",
-											"type": "text"
+											"type": "text",
+											"disabled": true
 										},
 										{
 											"key": "client_secret",
 											"value": "{{adminAppSecret}}",
-											"type": "text"
+											"type": "text",
+											"disabled": true
 										}
 									]
 								},
@@ -1358,7 +1375,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"username\": \"cleggett+salesu2020@pingidentity.com\",\n    \"password\": \"2Federate@2\"\n}"
+									"raw": "{\n    \"username\": \"jdoe@example.com\",\n    \"password\": \"2FederateM0re!\"\n}"
 								},
 								"url": {
 									"raw": "{{p14c_AuthPath}}/{{envID}}/flows/{{flowID}}",
@@ -3336,6 +3353,140 @@
 					],
 					"protocolProfileBehavior": {},
 					"_postman_isSubFolder": true
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Misc",
+			"item": [
+				{
+					"name": "Create Test User",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "01ea4fe1-91a2-4d81-b533-d2656c19590e",
+								"exec": [
+									"pm.test(\"Received 201 response\", function () {",
+									"    pm.response.to.have.status(201);",
+									"    console.log('201 received');",
+									"    let response = pm.response.json();",
+									"    pm.environment.set(\"userID\", response.id);",
+									"    console.log(response.id);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{p14cAccessToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"jdoe@example.com\",\n    \"name\": {\n        \"given\": \"John\",\n        \"family\": \"Doe\"\n    },\n    \"population\": {\n        \"id\": \"{{popID}}\"\n    },\n    \"username\": \"jdoe@example.com\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{p14c_ApiPath}}/environments/{{envID}}/users",
+							"host": [
+								"{{p14c_ApiPath}}"
+							],
+							"path": [
+								"environments",
+								"{{envID}}",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Set Password",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "34348e52-85e3-4e6a-b955-fab82e0f9a02",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{p14cAccessToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/vnd.pingidentity.password.set+json",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"value\": \"2FederateM0re!\",\n  \"forceChange\": false\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{p14c_ApiPath}}/environments/{{envID}}/users/{{userID}}/password",
+							"host": [
+								"{{p14c_ApiPath}}"
+							],
+							"path": [
+								"environments",
+								"{{envID}}",
+								"users",
+								"{{userID}}",
+								"password"
+							]
+						}
+					},
+					"response": []
 				}
 			],
 			"protocolProfileBehavior": {}
